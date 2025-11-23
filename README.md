@@ -1,19 +1,9 @@
 # FancyDialogs Web Editor
 
-A web-based visual editor for creating custom dialogs for the FancyDialogs Minecraft plugin (1.21.6+). Build beautiful, interactive dialogs with a live preview and export them as JSON files.
+A web-based visual editor for creating custom dialogs for the FancyDialogs Minecraft plugin (1.21.6+). 
 
 ![FancyDialogs Editor](https://img.shields.io/badge/Minecraft-1.21.6+-brightgreen)
 ![License](https://img.shields.io/badge/license-MIT-blue)
-
-## Features
-
-- 🎨 **Visual Editor** - Create dialogs without writing JSON
-- 👁️ **Live Preview** - See your dialog in real-time
-- 🎮 **Minecraft-styled UI** - Familiar interface for Minecraft players
-- 📝 **MiniMessage Support** - Full text formatting with colors, gradients, and more
-- 🔧 **PlaceholderAPI Compatible** - Use placeholders in your dialogs
-- 💾 **Import/Export** - Save and load dialog configurations
-- 📱 **Responsive Design** - Works on desktop and mobile
 
 ## Getting Started
 
