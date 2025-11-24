@@ -22,7 +22,16 @@ let currentSelectIndex = -1;
 
 document.addEventListener('DOMContentLoaded', () => {
     setupTabs();
+    renderButtons();
     updatePreview();
+});
+
+// Warn before leaving page if there are unsaved changes
+window.addEventListener('beforeunload', (e) => {
+    // Always show confirmation when leaving/refreshing
+    e.preventDefault();
+    e.returnValue = ''; // Required for Chrome
+    return ''; // For older browsers
 });
 
 function setupTabs() {
@@ -491,46 +500,81 @@ function updatePreview() {
 function updateVisualPreview() {
     const preview = document.getElementById('preview-container');
 
-    let html = `
+    let contentHtml = `
         <div class="preview-title">${parseMinimessage(currentDialog.title)}</div>
-        <div class="preview-body">
-            ${currentDialog.body.map(line => `<p>${parseMinimessage(line.text)}</p>`).join('') || '<p style="color: #888;">No body text</p>'}
-        </div>
     `;
 
+    // Only add body if there's actual content
+    if (currentDialog.body.length > 0 && currentDialog.body.some(line => line.text.trim())) {
+        contentHtml += `<div class="preview-body">
+            ${currentDialog.body.map(line => `<p>${parseMinimessage(line.text)}</p>`).join('')}
+        </div>`;
+    }
+
     if (currentDialog.inputs.textFields.length > 0 || currentDialog.inputs.selects.length > 0 || currentDialog.inputs.checkboxes.length > 0) {
-        html += '<div class="preview-inputs">';
+        contentHtml += '<div class="preview-inputs">';
+        let selectIndex = 0;
         [...currentDialog.inputs.textFields, ...currentDialog.inputs.selects, ...currentDialog.inputs.checkboxes]
             .sort((a, b) => a.order - b.order)
             .forEach(input => {
-                html += '<div class="preview-input-item">';
-                html += `<span class="preview-input-label">${parseMinimessage(input.label)}</span>`;
+                contentHtml += '<div class="preview-input-item">';
 
                 if (input.maxLength !== undefined) {
-                    html += `<input type="text" class="mc-input" placeholder="${input.placeholder}" style="margin: 0;">`;
+                    contentHtml += `<span class="preview-input-label">${parseMinimessage(input.label)}</span>`;
+                    contentHtml += `<input type="text" class="mc-input" placeholder="${input.placeholder}" style="margin: 0;">`;
                 } else if (input.options !== undefined) {
-                    html += '<select class="mc-select" style="margin: 0;">';
-                    input.options.forEach(opt => {
-                        html += `<option ${opt.initial ? 'selected' : ''}>${parseMinimessage(opt.display)}</option>`;
-                    });
-                    html += '</select>';
+                    const selectedOption = input.options.find(opt => opt.initial) || input.options[0];
+                    contentHtml += `<button class="preview-button minecraft-select-button" data-select-index="${selectIndex}" style="width: 100%; text-align: center;">${parseMinimessage(input.label)} ${parseMinimessage(selectedOption.display)}</button>`;
+                    selectIndex++;
                 } else {
-                    html += `<input type="checkbox" class="mc-checkbox" ${input.initial ? 'checked' : ''}>`;
+                    contentHtml += '<div class="preview-checkbox-wrapper">';
+                    contentHtml += `<input type="checkbox" class="mc-checkbox" ${input.initial ? 'checked' : ''}>`;
+                    contentHtml += `<span class="preview-input-label" style="display: inline; margin-bottom: 0;">${parseMinimessage(input.label)}</span>`;
+                    contentHtml += '</div>';
                 }
-                html += '</div>';
+                contentHtml += '</div>';
             });
-        html += '</div>';
+        contentHtml += '</div>';
     }
 
     if (currentDialog.buttons.length > 0) {
-        html += '<div class="preview-buttons">';
+        contentHtml += '<div class="preview-buttons">';
         currentDialog.buttons.forEach(button => {
-            html += `<div class="preview-button" data-tooltip="${escapeHtml(stripMinimessage(button.tooltip))}">${parseMinimessage(button.label)}</div>`;
+            contentHtml += `<div class="preview-button" data-tooltip="${escapeHtml(stripMinimessage(button.tooltip))}">${parseMinimessage(button.label)}</div>`;
         });
-        html += '</div>';
+        contentHtml += '</div>';
     }
 
-    preview.innerHTML = html;
+    preview.innerHTML = `
+        <div class="preview-dialog-content">
+            ${contentHtml}
+        </div>
+    `;
+
+    // Add click handlers for select buttons
+    document.querySelectorAll('.minecraft-select-button').forEach(button => {
+        button.addEventListener('click', (e) => {
+            const selectIndex = parseInt(e.target.dataset.selectIndex);
+            cycleSelectOption(selectIndex);
+        });
+    });
+}
+
+function cycleSelectOption(selectIndex) {
+    const selects = currentDialog.inputs.selects;
+    if (!selects[selectIndex]) return;
+
+    const select = selects[selectIndex];
+    const currentInitialIndex = select.options.findIndex(opt => opt.initial);
+
+    // Reset all options
+    select.options.forEach(opt => opt.initial = false);
+
+    // Set next option as initial
+    const nextIndex = (currentInitialIndex + 1) % select.options.length;
+    select.options[nextIndex].initial = true;
+
+    updatePreview();
 }
 
 function updateJSONPreview() {
@@ -597,6 +641,26 @@ function escapeHtml(text) {
     const div = document.createElement('div');
     div.textContent = text;
     return div.innerHTML;
+}
+
+function copyJSON() {
+    updatePreview();
+    const json = JSON.stringify(currentDialog, null, 2);
+
+    navigator.clipboard.writeText(json).then(() => {
+        const btn = document.querySelector('.copy-json-btn');
+        const originalText = btn.textContent;
+        btn.textContent = '✓ Copied!';
+        btn.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
+
+        setTimeout(() => {
+            btn.textContent = originalText;
+            btn.style.background = '';
+        }, 2000);
+    }).catch(err => {
+        console.error('Failed to copy:', err);
+        alert('Failed to copy to clipboard');
+    });
 }
 
 function downloadJSON() {
