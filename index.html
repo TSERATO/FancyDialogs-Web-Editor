@@ -3,26 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FancyDialogs Editor - Minecraft Style</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>FancyDialogs Editor | Modern Dialog Creator for Minecraft</title>
+    <link rel="stylesheet" href="styles.css?v=11">
 </head>
 <body>
     <div class="minecraft-container">
         <div class="mc-header">
-            <div class="mc-title">FANCYDIALOGS EDITOR</div>
-            <div class="mc-subtitle">Create Minecraft 1.21.6+ Dialogs</div>
+            <div class="mc-title">FancyDialogs Editor</div>
+            <div class="mc-subtitle">Create interactive dialogs for Minecraft 1.21.6+</div>
         </div>
 
         <div class="main-grid">
             <!-- Editor Panel -->
             <div class="mc-panel">
-                <div class="mc-panel-title">⚙ DIALOG EDITOR</div>
+                <div class="mc-panel-title">⚙️ Dialog Editor</div>
 
                 <div class="mc-tabs">
-                    <button class="mc-tab active" data-tab="basic">BASIC</button>
-                    <button class="mc-tab" data-tab="body">BODY</button>
-                    <button class="mc-tab" data-tab="inputs">INPUTS</button>
-                    <button class="mc-tab" data-tab="buttons">BUTTONS</button>
+                    <button class="mc-tab active" data-tab="basic">Basic</button>
+                    <button class="mc-tab" data-tab="body">Body</button>
+                    <button class="mc-tab" data-tab="inputs">Inputs</button>
+                    <button class="mc-tab" data-tab="buttons">Buttons</button>
                 </div>
 
                 <!-- Basic Tab -->
@@ -51,30 +51,30 @@
 
                     <div id="body-lines-container"></div>
 
-                    <button class="mc-button mc-button-green" onclick="addBodyLine()" style="width: 100%;">+ ADD LINE</button>
+                    <button class="mc-button mc-button-green" onclick="addBodyLine()" style="width: 100%;">+ Add Line</button>
                 </div>
 
                 <!-- Inputs Tab -->
                 <div class="tab-content" id="inputs-tab">
                     <div class="mc-tabs">
-                        <button class="mc-tab active" data-subtab="textfields">TEXT</button>
-                        <button class="mc-tab" data-subtab="selects">DROPDOWN</button>
-                        <button class="mc-tab" data-subtab="checkboxes">CHECKBOX</button>
+                        <button class="mc-tab active" data-subtab="textfields">Text</button>
+                        <button class="mc-tab" data-subtab="selects">Dropdown</button>
+                        <button class="mc-tab" data-subtab="checkboxes">Checkbox</button>
                     </div>
 
                     <div class="tab-content active" id="textfields-subtab">
                         <div id="textfields-container"></div>
-                        <button class="mc-button mc-button-green" onclick="addTextField()" style="width: 100%;">+ ADD TEXT FIELD</button>
+                        <button class="mc-button mc-button-green" onclick="addTextField()" style="width: 100%;">+ Add Text Field</button>
                     </div>
 
                     <div class="tab-content" id="selects-subtab">
                         <div id="selects-container"></div>
-                        <button class="mc-button mc-button-green" onclick="addSelect()" style="width: 100%;">+ ADD DROPDOWN</button>
+                        <button class="mc-button mc-button-green" onclick="addSelect()" style="width: 100%;">+ Add Dropdown</button>
                     </div>
 
                     <div class="tab-content" id="checkboxes-subtab">
                         <div id="checkboxes-container"></div>
-                        <button class="mc-button mc-button-green" onclick="addCheckbox()" style="width: 100%;">+ ADD CHECKBOX</button>
+                        <button class="mc-button mc-button-green" onclick="addCheckbox()" style="width: 100%;">+ Add Checkbox</button>
                     </div>
                 </div>
 
@@ -86,33 +86,39 @@
 
                     <div id="buttons-container"></div>
 
-                    <button class="mc-button mc-button-green" onclick="addButton()" style="width: 100%;">+ ADD BUTTON</button>
+                    <button class="mc-button mc-button-green" onclick="addButton()" style="width: 100%;">+ Add Button</button>
                 </div>
 
                 <div class="button-row">
-                    <button class="mc-button mc-button-green" onclick="downloadJSON()" style="flex: 1;">💾 DOWNLOAD</button>
-                    <button class="mc-button mc-button-blue" onclick="loadExample()" style="flex: 1;">📂 EXAMPLE</button>
-                    <button class="mc-button mc-button-gold" onclick="document.getElementById('file-input').click()" style="flex: 1;">📁 IMPORT</button>
-                    <button class="mc-button mc-button-red" onclick="resetDialog()" style="flex: 1;">🗑 RESET</button>
+                    <button class="mc-button mc-button-green" onclick="downloadJSON()" style="flex: 1;">💾 Download</button>
+                    <button class="mc-button mc-button-blue" onclick="loadExample()" style="flex: 1;">📂 Example</button>
+                    <button class="mc-button mc-button-gold" onclick="document.getElementById('file-input').click()" style="flex: 1;">📁 Import</button>
+                    <button class="mc-button mc-button-red" onclick="resetDialog()" style="flex: 1;">🗑️ Reset</button>
                     <input type="file" id="file-input" accept=".json" style="display: none;" onchange="importJSON(event)">
                 </div>
             </div>
 
             <!-- Preview Panel -->
             <div class="mc-panel">
-                <div class="mc-panel-title">👁 LIVE PREVIEW</div>
+                <div class="mc-panel-title">👁️ Live Preview</div>
 
                 <div class="mc-tabs">
-                    <button class="mc-tab active" data-preview="visual">VISUAL</button>
-                    <button class="mc-tab" data-preview="code">CODE</button>
+                    <button class="mc-tab active" data-preview="visual">Visual</button>
+                    <button class="mc-tab" data-preview="code">Code</button>
                 </div>
 
                 <div class="tab-content active" id="visual-preview">
-                    <div class="preview-dialog" id="preview-container"></div>
+                    <div class="preview-wrapper">
+                        <div class="preview-background"></div>
+                        <div class="preview-dialog" id="preview-container"></div>
+                    </div>
                 </div>
 
                 <div class="tab-content" id="code-preview">
-                    <div class="code-preview" id="json-preview"></div>
+                    <div style="position: relative;">
+                        <button class="mc-button mc-button-blue copy-json-btn" onclick="copyJSON()" style="position: absolute; top: 0.5rem; right: 0.5rem; padding: 0.5rem 1rem; font-size: 0.75rem;">📋 Copy</button>
+                        <div class="code-preview" id="json-preview"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -125,7 +131,7 @@
     <!-- Action Modal -->
     <div id="action-modal" class="mc-modal">
         <div class="mc-modal-content">
-            <div class="mc-modal-header">ADD ACTION</div>
+            <div class="mc-modal-header">Add Action</div>
 
             <label class="mc-label">Action Type:</label>
             <select class="mc-select" id="action-type" onchange="updateActionFields()">
@@ -140,8 +146,8 @@
             <div id="action-fields"></div>
 
             <div class="mc-modal-footer">
-                <button class="mc-button mc-button-red" onclick="closeActionModal()">CANCEL</button>
-                <button class="mc-button mc-button-green" onclick="confirmAction()">ADD</button>
+                <button class="mc-button mc-button-red" onclick="closeActionModal()">Cancel</button>
+                <button class="mc-button mc-button-green" onclick="confirmAction()">Add</button>
             </div>
         </div>
     </div>
@@ -149,7 +155,7 @@
     <!-- Select Option Modal -->
     <div id="option-modal" class="mc-modal">
         <div class="mc-modal-content">
-            <div class="mc-modal-header">ADD OPTION</div>
+            <div class="mc-modal-header">Add Option</div>
 
             <label class="mc-label">Value (placeholder):</label>
             <input type="text" class="mc-input" id="option-value" placeholder="red">
@@ -163,13 +169,13 @@
             </div>
 
             <div class="mc-modal-footer">
-                <button class="mc-button mc-button-red" onclick="closeOptionModal()">CANCEL</button>
-                <button class="mc-button mc-button-green" onclick="confirmOption()">ADD</button>
+                <button class="mc-button mc-button-red" onclick="closeOptionModal()">Cancel</button>
+                <button class="mc-button mc-button-green" onclick="confirmOption()">Add</button>
             </div>
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=2"></script>
     <script>
         window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     </script>
