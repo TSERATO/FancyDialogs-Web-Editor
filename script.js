@@ -499,65 +499,261 @@ function updatePreview() {
 
 function updateVisualPreview() {
     const preview = document.getElementById('preview-container');
+    const px = (n) => `calc(var(--dialog-px) * ${n})`;
 
-    let contentHtml = `
-        <div class="preview-title">${parseMinimessage(currentDialog.title)}</div>
+    // Save scroll position
+    const scrollContainer = preview.querySelector('.dialog-preview > div:nth-child(2)');
+    const scrollPosition = scrollContainer ? scrollContainer.scrollTop : 0;
+
+    // Title section
+    let titleHtml = `
+        <div style="height: ${px(33)}; display: flex; gap: ${px(10)}; justify-content: center; align-items: center">
+            <span class="text-component">${parseMinimessage(currentDialog.title)}</span>
+            <div class="tooltip-container">
+                <div class="dialog-warning-button" style="width: ${px(20)}; height: ${px(20)};"></div>
+                <div class="dialog-tooltip" style="left: ${px(20)}; top: ${px(-10)};">
+                    <span class="text-component">This is a custom screen. Click here to learn more.</span>
+                </div>
+            </div>
+        </div>
     `;
 
-    // Only add body if there's actual content
+    // Body and inputs section
+    let bodyHtml = '';
     if (currentDialog.body.length > 0 && currentDialog.body.some(line => line.text.trim())) {
-        contentHtml += `<div class="preview-body">
-            ${currentDialog.body.map(line => `<p>${parseMinimessage(line.text)}</p>`).join('')}
-        </div>`;
+        currentDialog.body.forEach(line => {
+            if (line.text.trim()) {
+                bodyHtml += `<div class="dialog-body" style="max-width: ${px(200)}; padding: ${px(4)}">
+                    <span class="text-component">${parseMinimessage(line.text)}</span>
+                </div>`;
+            }
+        });
     }
 
+    // Inputs
+    let inputsHtml = '';
     if (currentDialog.inputs.textFields.length > 0 || currentDialog.inputs.selects.length > 0 || currentDialog.inputs.checkboxes.length > 0) {
-        contentHtml += '<div class="preview-inputs">';
         let selectIndex = 0;
         [...currentDialog.inputs.textFields, ...currentDialog.inputs.selects, ...currentDialog.inputs.checkboxes]
             .sort((a, b) => a.order - b.order)
             .forEach(input => {
-                contentHtml += '<div class="preview-input-item">';
-
                 if (input.maxLength !== undefined) {
-                    contentHtml += `<span class="preview-input-label">${parseMinimessage(input.label)}</span>`;
-                    contentHtml += `<input type="text" class="mc-input" placeholder="${input.placeholder}" style="margin: 0;">`;
+                    // Text field
+                    const currentValue = input.currentValue || '';
+                    inputsHtml += `<div style="display: flex; flex-direction: column; gap: ${px(4)}; margin-bottom: ${px(10)};">
+                        <span class="text-component">${parseMinimessage(input.label)}</span>
+                        <div class="dialog-edit-box" style="width: ${px(200)}; height: ${px(20)}; position: relative;">
+                            <input type="text"
+                                class="preview-text-input"
+                                data-field-key="${input.key}"
+                                value="${escapeHtml(currentValue)}"
+                                placeholder="${escapeHtml(input.placeholder || '')}"
+                                maxlength="${input.maxLength}"
+                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: transparent; border: none; outline: none; padding: ${px(4)}; font-family: MinecraftSeven, sans-serif; font-size: ${px(8)}; color: #fff;">
+                        </div>
+                    </div>`;
                 } else if (input.options !== undefined) {
+                    // Select/dropdown
                     const selectedOption = input.options.find(opt => opt.initial) || input.options[0];
-                    contentHtml += `<button class="preview-button minecraft-select-button" data-select-index="${selectIndex}" style="width: 100%; text-align: center;">${parseMinimessage(input.label)} ${parseMinimessage(selectedOption.display)}</button>`;
+                    const label = selectedOption ? selectedOption.display || selectedOption.value : '';
+                    inputsHtml += `<div class="dialog-button minecraft-select-button" data-select-index="${selectIndex}" style="width: ${px(200)}; height: ${px(20)}; cursor: pointer; margin-bottom: ${px(10)};">
+                        <span class="text-component">${parseMinimessage(input.label)} ${parseMinimessage(label)}</span>
+                    </div>`;
                     selectIndex++;
                 } else {
-                    contentHtml += '<div class="preview-checkbox-wrapper">';
-                    contentHtml += `<input type="checkbox" class="mc-checkbox" ${input.initial ? 'checked' : ''}>`;
-                    contentHtml += `<span class="preview-input-label" style="display: inline; margin-bottom: 0;">${parseMinimessage(input.label)}</span>`;
-                    contentHtml += '</div>';
+                    // Checkbox
+                    inputsHtml += `<div style="display: flex; gap: ${px(4)}; align-items: center; justify-content: center; margin-bottom: ${px(10)};">
+                        <div class="dialog-checkbox ${input.initial ? 'dialog-selected' : ''}" style="width: ${px(17)}; height: ${px(17)}; flex-shrink: 0;"></div>
+                        <span class="text-component" style="color: #e0e0e0; line-height: ${px(17)};">${parseMinimessage(input.label)}</span>
+                    </div>`;
                 }
-                contentHtml += '</div>';
             });
-        contentHtml += '</div>';
     }
 
+    // Buttons section
+    let buttonsHtml = '';
     if (currentDialog.buttons.length > 0) {
-        contentHtml += '<div class="preview-buttons">';
-        currentDialog.buttons.forEach(button => {
-            contentHtml += `<div class="preview-button" data-tooltip="${escapeHtml(stripMinimessage(button.tooltip))}">${parseMinimessage(button.label)}</div>`;
+        const columns = 2;
+        const totalCount = currentDialog.buttons.length;
+        const gridCount = Math.floor(totalCount / columns) * columns;
+
+        buttonsHtml = `<div style="padding-top: ${px(4)}; display: grid; grid-template-columns: repeat(${columns}, minmax(0, 1fr)); gap: ${px(2)}; justify-content: center;">`;
+
+        currentDialog.buttons.slice(0, gridCount).forEach((button, index) => {
+            if (button.tooltip) {
+                buttonsHtml += `<div class="tooltip-container">
+                    <div class="dialog-button preview-button-click" data-button-index="${index}" style="width: ${px(150)}; height: ${px(20)}; cursor: pointer;">
+                        <span class="text-component">${parseMinimessage(button.label)}</span>
+                    </div>
+                    <div class="dialog-tooltip" style="left: 50%; transform: translateX(-50%); bottom: ${px(25)};">
+                        <span class="text-component">${parseMinimessage(button.tooltip)}</span>
+                    </div>
+                </div>`;
+            } else {
+                buttonsHtml += `<div class="dialog-button preview-button-click" data-button-index="${index}" style="width: ${px(150)}; height: ${px(20)}; cursor: pointer;">
+                    <span class="text-component">${parseMinimessage(button.label)}</span>
+                </div>`;
+            }
         });
-        contentHtml += '</div>';
+
+        if (totalCount > gridCount) {
+            buttonsHtml += `<div style="grid-column: span ${columns}; display: flex; gap: ${px(2)}; justify-content: center;">`;
+            currentDialog.buttons.slice(gridCount).forEach((button, i) => {
+                const index = gridCount + i;
+                if (button.tooltip) {
+                    buttonsHtml += `<div class="tooltip-container">
+                        <div class="dialog-button preview-button-click" data-button-index="${index}" style="width: ${px(150)}; height: ${px(20)}; cursor: pointer;">
+                            <span class="text-component">${parseMinimessage(button.label)}</span>
+                        </div>
+                        <div class="dialog-tooltip" style="left: 50%; transform: translateX(-50%); bottom: ${px(25)};">
+                            <span class="text-component">${parseMinimessage(button.tooltip)}</span>
+                        </div>
+                    </div>`;
+                } else {
+                    buttonsHtml += `<div class="dialog-button preview-button-click" data-button-index="${index}" style="width: ${px(150)}; height: ${px(20)}; cursor: pointer;">
+                        <span class="text-component">${parseMinimessage(button.label)}</span>
+                    </div>`;
+                }
+            });
+            buttonsHtml += '</div>';
+        }
+
+        buttonsHtml += '</div>';
     }
+
+    const footerHeight = 33;
 
     preview.innerHTML = `
-        <div class="preview-dialog-content">
-            ${contentHtml}
+        <div class="dialog-preview" style="--dialog-px: 1px; width: 100%; max-width: 400px; max-height: 450px; display: flex; flex-direction: column; margin: 0 auto;">
+            ${titleHtml}
+            <div style="display: flex; flex-direction: column; gap: ${px(10)}; align-items: center; overflow-y: auto; flex: 1; padding: ${px(10)} 0;">
+                ${bodyHtml}
+                ${inputsHtml}
+            </div>
+            <div style="padding-top: ${px(10)}; flex-shrink: 0; display: flex; justify-content: center;">
+                ${buttonsHtml}
+            </div>
         </div>
     `;
+
+    // Set up responsive scaling
+    const dialogPreview = preview.querySelector('.dialog-preview');
+    if (dialogPreview) {
+        function resizeHandler() {
+            const width = Math.floor(preview.clientWidth);
+            dialogPreview.style.setProperty('--dialog-px', `${width/400}px`);
+        }
+        resizeHandler();
+        window.removeEventListener('resize', resizeHandler);
+        window.addEventListener('resize', resizeHandler);
+    }
+
+    // Restore scroll position
+    const newScrollContainer = preview.querySelector('.dialog-preview > div:nth-child(2)');
+    if (newScrollContainer && scrollPosition > 0) {
+        newScrollContainer.scrollTop = scrollPosition;
+    }
 
     // Add click handlers for select buttons
     document.querySelectorAll('.minecraft-select-button').forEach(button => {
         button.addEventListener('click', (e) => {
-            const selectIndex = parseInt(e.target.dataset.selectIndex);
+            const selectIndex = parseInt(e.currentTarget.dataset.selectIndex);
             cycleSelectOption(selectIndex);
         });
     });
+
+    // Add click handlers for action buttons
+    document.querySelectorAll('.preview-button-click').forEach(button => {
+        button.addEventListener('click', (e) => {
+            const buttonIndex = parseInt(e.currentTarget.dataset.buttonIndex);
+            showButtonActions(buttonIndex);
+        });
+    });
+
+    // Add input handlers for text fields
+    document.querySelectorAll('.preview-text-input').forEach(input => {
+        input.addEventListener('input', (e) => {
+            const fieldKey = e.target.dataset.fieldKey;
+            const value = e.target.value;
+
+            // Store the value in the dialog data
+            const textField = currentDialog.inputs.textFields.find(f => f.key === fieldKey);
+            if (textField) {
+                textField.currentValue = value;
+            }
+        });
+    });
+}
+
+function showButtonActions(buttonIndex) {
+    const button = currentDialog.buttons[buttonIndex];
+    const consoleContent = document.getElementById('preview-console-content');
+
+    if (!button || !button.actions || button.actions.length === 0) {
+        consoleContent.innerHTML = `<div style="color: var(--text-muted); font-style: italic;">Button "${stripMinimessage(button.label)}" has no actions</div>`;
+        return;
+    }
+
+    // Get current input values
+    const inputValues = {};
+
+    // Get text field values
+    currentDialog.inputs.textFields.forEach(field => {
+        inputValues[field.key] = field.currentValue || '';
+    });
+
+    // Get select values
+    currentDialog.inputs.selects.forEach(select => {
+        const selectedOption = select.options.find(opt => opt.initial) || select.options[0];
+        inputValues[select.key] = selectedOption ? selectedOption.value : '';
+    });
+
+    // Get checkbox values
+    currentDialog.inputs.checkboxes.forEach(checkbox => {
+        inputValues[checkbox.key] = checkbox.initial ? 'true' : 'false';
+    });
+
+    let output = '';
+    button.actions.forEach((action, index) => {
+        const actionType = action.name || 'unknown';
+        let actionData = action.data || '';
+
+        // Replace placeholders with actual values
+        actionData = actionData.replace(/\{(\w+)\}/g, (match, key) => {
+            return inputValues[key] !== undefined ? inputValues[key] : match;
+        });
+
+        output += `<div>`;
+        output += `<div class="console-action-type">${actionType}</div>`;
+        output += `<div class="console-action-data">`;
+
+        switch(actionType) {
+            case 'message':
+                output += `Send message: "${actionData}"`;
+                break;
+            case 'open_dialog':
+                output += `Open dialog: "${actionData}"`;
+                break;
+            case 'open_random_dialog':
+                output += `Open random dialog from: ${actionData}`;
+                break;
+            case 'console_command':
+                output += `Execute console command: /${actionData}`;
+                break;
+            case 'player_command':
+                output += `Execute as player: /${actionData}`;
+                break;
+            case 'send_to_server':
+                output += `Transfer to server: "${actionData}"`;
+                break;
+            default:
+                output += `Data: ${actionData}`;
+        }
+
+        output += `</div></div>`;
+    });
+
+    consoleContent.innerHTML = output;
 }
 
 function cycleSelectOption(selectIndex) {

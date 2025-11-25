@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FancyDialogs Editor</title>
-    <link rel="stylesheet" href="styles.css?v=11">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="minecraft-container">
@@ -112,6 +112,12 @@
                         <div class="preview-background"></div>
                         <div class="preview-dialog" id="preview-container"></div>
                     </div>
+                    <div class="preview-console" id="preview-console">
+                        <div class="preview-console-header">Console Output</div>
+                        <div class="preview-console-content" id="preview-console-content">
+                            <div style="color: var(--text-muted); font-style: italic;">Click a button to see what actions it will execute...</div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="tab-content" id="code-preview">
@@ -175,7 +181,7 @@
         </div>
     </div>
 
-    <script src="script.js?v=2"></script>
+    <script src="script.js">
     <script>
         window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     </script>

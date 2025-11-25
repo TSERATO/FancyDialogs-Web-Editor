@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+@font-face {
+    font-family: "MinecraftSeven";
+    src: url('https://misode.github.io/fonts/seven.ttf') format("truetype");
+}
 
 * {
     margin: 0;
@@ -464,202 +468,228 @@ body::before {
 .preview-dialog {
     position: relative;
     z-index: 2;
-    width: 320px;
-    max-width: 90%;
-    background: transparent;
-}
-
-.preview-dialog-content {
-    background: transparent;
-    max-height: 400px;
-    overflow-y: auto;
-    overflow-x: hidden;
-    display: flex;
-    flex-direction: column;
-}
-
-.preview-dialog-content::-webkit-scrollbar {
-    width: 10px;
-}
-
-.preview-dialog-content::-webkit-scrollbar-track {
-    background: rgba(85, 85, 85, 0.8);
-    border: 1px solid #000;
-}
-
-.preview-dialog-content::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, #8b8b8b 0%, #676767 100%);
-    border: 1px solid #000;
-    box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.2);
-}
-
-.preview-dialog-content::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(180deg, #9b9b9b 0%, #777 100%);
-}
-
-.preview-title {
-    font-size: 0.75rem;
-    font-weight: 400;
-    text-align: center;
-    padding: 0.4rem 0.5rem;
-    font-family: 'Minecraft', 'Press Start+2P', monospace;
-    color: #fff;
-    text-shadow: 2px 2px 0 #000;
-    line-height: 1.2;
-}
-
-.preview-body {
-    padding: 0.3rem 0.6rem 0.4rem;
-    border: none;
-    box-shadow: none;
-    font-family: 'Minecraft', 'Press Start+2P', monospace;
-}
-
-.preview-body p {
-    margin-bottom: 0.2rem;
-    font-size: 0.65rem;
-    line-height: 1.4;
-    color: #fff;
-    text-shadow: 2px 2px 0 #000;
-    text-align: center;
-}
-
-.preview-body p:last-child {
-    margin-bottom: 0;
-}
-
-.preview-inputs {
-    padding: 0.3rem 0.6rem 0.4rem;
-    border: none;
-    box-shadow: none;
-}
-
-.preview-input-item {
-    margin-bottom: 0.5rem;
-}
-
-.preview-input-item:last-child {
-    margin-bottom: 0;
-}
-
-.preview-input-label {
-    display: block;
-    font-size: 0.65rem;
-    font-weight: 400;
-    color: #FFFF55;
-    text-shadow: 2px 2px 0 #3F3F00;
-    margin-bottom: 0.3rem;
-    font-family: 'Minecraft', 'Press Start+2P', monospace;
-}
-
-.preview-inputs .mc-input,
-.preview-inputs .mc-select,
-.preview-inputs .mc-checkbox {
-    border: none !important;
-    background: rgba(0, 0, 0, 0.5) !important;
-    color: #fff !important;
-    font-family: 'Minecraft', 'Press Start+2P', monospace !important;
-    font-size: 0.65rem !important;
-    border-radius: 0 !important;
-    padding: 0.3rem 0.5rem !important;
-}
-
-.preview-inputs .mc-select {
     width: 100%;
-    appearance: none;
-    cursor: pointer;
+    max-width: 500px;
+    background: transparent;
 }
 
-.preview-inputs .mc-checkbox {
-    width: 16px;
-    height: 16px;
-    margin-right: 0.5rem;
-    vertical-align: middle;
-    cursor: pointer;
+.preview-overlay {
+    height: min-content;
+    position: relative;
+    cursor: default;
 }
 
-.preview-checkbox-wrapper {
+.preview-overlay > img {
+    display: block;
+    width: 100%;
+}
+
+.preview-overlay > div {
+    position: absolute;
+}
+
+.dialog-preview {
+    cursor: default;
+}
+
+.dialog-preview * {
+    flex-shrink: 0;
+}
+
+.dialog-preview .text-component {
+    font-family: MinecraftSeven, sans-serif;
+    font-size: calc(var(--dialog-px) * 10);
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.dialog-preview .text-component span {
+    text-shadow: calc(var(--dialog-px) * 1) calc(var(--dialog-px) * 1) var(--shadow-color, transparent);
+}
+
+.dialog-body {
+    text-align: center;
+}
+
+.dialog-button,
+.dialog-edit-box,
+.dialog-checkbox,
+.dialog-slider-track,
+.dialog-slider-handle,
+.dialog-tooltip {
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -webkit-crisp-edges;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
+}
+
+.dialog-warning-button {
+    flex-shrink: 0;
+    background-image: url(images/dialog/warning_button.png);
+    background-size: contain;
+    cursor: pointer;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -webkit-crisp-edges;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
+}
+
+.dialog-warning-button:hover {
+    background-image: url(images/dialog/warning_button_highlighted.png);
+}
+
+.dialog-button {
+    border: solid calc(var(--dialog-px)*2) #000;
+    border-bottom-width: calc(var(--dialog-px)*3);
+    border-image-source: url(images/dialog/button.png);
+    border-image-slice: 2 2 3 2 fill;
+    border-image-repeat: repeat;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-bottom: var(--dialog-px);
+    overflow: hidden;
 }
 
-.preview-inputs .mc-input:focus,
-.preview-inputs .mc-select:focus {
-    border: none !important;
-    box-shadow: none !important;
-    background: rgba(0, 0, 0, 0.7) !important;
+.dialog-button:hover {
+    border-image-source: url(images/dialog/button_highlighted.png);
 }
 
-.preview-buttons {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.3rem;
-    padding: 0.3rem 0.6rem 0.5rem;
-    border: none;
-    box-shadow: none;
+.dialog-edit-box {
+    border: solid calc(var(--dialog-px) * 1) #000;
+    border-image-source: url(images/dialog/text_field.png);
+    border-image-slice: 1 fill;
+    border-image-repeat: repeat;
+    display: flex;
+    align-items: flex-start;
+    padding-top: calc(var(--dialog-px) * 4);
+    padding-left: calc(var(--dialog-px) * 4);
 }
 
-.preview-button:last-child:nth-child(odd) {
-    grid-column: 1 / -1;
-    justify-self: center;
-    width: calc(50% - 0.15rem);
+.dialog-checkbox {
+    background-image: url(images/dialog/checkbox.png);
+    background-size: contain;
 }
 
-.preview-button {
-    background: #8b8b8b;
-    border: 1px solid rgba(0, 0, 0, 0.5);
-    box-shadow:
-        inset -1px -1px 0 rgba(0, 0, 0, 0.5),
-        inset 1px 1px 0 rgba(255, 255, 255, 0.5);
-    border-radius: 0;
-    padding: 0.4rem 0.8rem;
-    font-size: 0.65rem;
-    font-weight: 400;
-    text-align: center;
-    cursor: pointer;
+.dialog-checkbox.dialog-selected {
+    background-image: url(images/dialog/checkbox_selected.png);
+}
+
+.dialog-slider {
     position: relative;
-    color: #fff;
-    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.8);
-    font-family: 'Minecraft', 'Press Start+2P', monospace;
-    transition: none;
-    image-rendering: pixelated;
-    min-height: 28px;
 }
 
-.preview-button:hover {
-    background: #a5c5d8;
-    border: 1px solid rgba(0, 0, 0, 0.5);
-    box-shadow:
-        inset -1px -1px 0 rgba(0, 0, 0, 0.5),
-        inset 1px 1px 0 rgba(255, 255, 255, 0.5);
-}
-
-.preview-button:active {
-    background: #5a7a99;
-    box-shadow:
-        inset 1px 1px 0 rgba(0, 0, 0, 0.5),
-        inset -1px -1px 0 rgba(255, 255, 255, 0.3);
-}
-
-.preview-button:hover::after {
-    content: attr(data-tooltip);
+.dialog-slider-track {
+    border: solid calc(var(--dialog-px) * 1) #000;
+    border-image-source: url(images/dialog/slider.png);
+    border-image-slice: 1 fill;
+    border-image-repeat: repeat;
     position: absolute;
-    bottom: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.dialog-slider-handle {
+    background-image: url(images/dialog/slider_handle.png);
+    background-size: contain;
+    position: absolute;
+    top: 0;
     left: 50%;
+    width: calc(var(--dialog-px) * 8);
+    height: 100%;
     transform: translateX(-50%);
-    background: rgba(0, 0, 0, 0.9);
-    border: 2px solid #555;
-    border-radius: 0;
-    padding: 0.5rem 0.75rem;
-    font-size: 0.75rem;
-    white-space: nowrap;
-    z-index: 10;
+}
+
+.dialog-slider-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: var(--dialog-px);
+}
+
+.dialog-tooltip {
+    padding: calc(var(--dialog-px) * 4) calc(var(--dialog-px) * 6);
+    border: solid calc(var(--dialog-px) * 2) #220044;
+    border-image-source: url(images/tooltip.png);
+    border-image-slice: 2 fill;
+    border-image-outset: calc(var(--dialog-px) * 1);
+    width: max-content;
+    max-width: calc(var(--dialog-px) * 150);
+    display: none;
+    position: absolute;
+    pointer-events: none;
+}
+
+.tooltip-container {
+    position: relative;
+}
+
+.tooltip-container:hover > .dialog-tooltip {
+    display: block;
+}
+
+.tooltip-container > .dialog-tooltip .text-component {
+    white-space: pre-wrap;
+    text-align: initial;
+}
+
+
+.preview-console {
+    margin-top: 1rem;
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.preview-console-header {
+    background: rgba(124, 58, 237, 0.2);
+    padding: 0.75rem 1rem;
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--border);
+}
+
+.preview-console-content {
+    padding: 1rem;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 0.8125rem;
+    line-height: 1.6;
+    max-height: 200px;
+    overflow-y: auto;
+    color: var(--text-primary);
+}
+
+.preview-console-content > div {
     margin-bottom: 0.5rem;
-    color: #FFFFFF;
-    font-weight: 400;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-    text-shadow: none;
+    padding: 0.5rem;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 6px;
+    border-left: 3px solid var(--primary);
+}
+
+.preview-console-content > div:last-child {
+    margin-bottom: 0;
+}
+
+.console-action-type {
+    color: var(--accent);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+}
+
+.console-action-data {
+    color: var(--text-secondary);
+    margin-top: 0.25rem;
 }
 
 .code-preview {
