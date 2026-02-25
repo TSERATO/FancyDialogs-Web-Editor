@@ -187,7 +187,7 @@ body::before {
 
 /* === Surface Card (replaces .mc-panel) === */
 .surface-card {
-  background: rgba(24, 18, 16, 0.98);
+  background: rgba(25, 18, 13, 0.98);
   backdrop-filter: blur(10px);
   border-radius: var(--md-sys-shape-corner-medium);
   padding: 2rem;
@@ -837,14 +837,14 @@ md-dialog [slot="content"] .mc-label:first-child {
 
 /* === Footer === */
 .footer {
-  background: rgba(14, 10, 8, 0.99);
+  background: rgba(13, 9, 6, 0.99);
   position: relative;
   z-index: 1;
   margin-top: 2rem;
 }
 
 :root[data-theme="light"] .footer {
-  background: rgba(240, 232, 228, 0.99);
+  background: rgba(255, 248, 245, 0.99);
 }
 
 .footer-wave {
@@ -938,7 +938,7 @@ md-dialog [slot="content"] .mc-label:first-child {
   position: fixed;
   top: 0; left: 0;
   width: 100%; height: 100%;
-  background: linear-gradient(135deg, #181210 0%, #251e1b 50%, #181210 100%);
+  background: linear-gradient(135deg, #19120D 0%, #231913 50%, #19120D 100%);
   display: flex;
   align-items: center;
   justify-content: center;
