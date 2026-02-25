@@ -1,0 +1,221 @@
+/* === Minecraft Dialog Preview Styles === */
+/* Preserved verbatim from original styles.css — zero functional changes */
+/* Image paths updated to use public/ directory absolute paths */
+
+@font-face {
+  font-family: "MinecraftSeven";
+  src: url('https://misode.github.io/fonts/seven.ttf') format("truetype");
+}
+
+.preview-wrapper {
+  position: relative;
+  height: 500px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 2rem;
+}
+
+.preview-background {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  background: url('/background.png') center/cover no-repeat;
+  filter: blur(5px);
+  z-index: 1;
+}
+
+.preview-background::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.preview-dialog {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 500px;
+  background: transparent;
+}
+
+.preview-overlay {
+  height: min-content;
+  position: relative;
+  cursor: default;
+}
+
+.preview-overlay > img {
+  display: block;
+  width: 100%;
+}
+
+.preview-overlay > div {
+  position: absolute;
+}
+
+.dialog-preview {
+  cursor: default;
+}
+
+.dialog-preview * {
+  flex-shrink: 0;
+}
+
+.dialog-preview .text-component {
+  font-family: MinecraftSeven, sans-serif;
+  font-size: calc(var(--dialog-px) * 10);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.dialog-preview .text-component span {
+  text-shadow: calc(var(--dialog-px) * 1) calc(var(--dialog-px) * 1) var(--shadow-color, transparent);
+}
+
+.dialog-body {
+  text-align: center;
+}
+
+.dialog-button,
+.dialog-edit-box,
+.dialog-checkbox,
+.dialog-slider-track,
+.dialog-slider-handle,
+.dialog-tooltip {
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -webkit-crisp-edges;
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+}
+
+.dialog-warning-button {
+  flex-shrink: 0;
+  background-image: url('/images/dialog/warning_button.png');
+  background-size: contain;
+  cursor: pointer;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -webkit-crisp-edges;
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+}
+
+.dialog-warning-button:hover {
+  background-image: url('/images/dialog/warning_button_highlighted.png');
+}
+
+.dialog-button {
+  border: solid calc(var(--dialog-px)*2) #000;
+  border-bottom-width: calc(var(--dialog-px)*3);
+  border-image-source: url('/images/dialog/button.png');
+  border-image-slice: 2 2 3 2 fill;
+  border-image-repeat: repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: var(--dialog-px);
+  overflow: hidden;
+}
+
+.dialog-button:hover {
+  border-image-source: url('/images/dialog/button_highlighted.png');
+}
+
+.dialog-edit-box {
+  border: solid calc(var(--dialog-px) * 1) #000;
+  border-image-source: url('/images/dialog/text_field.png');
+  border-image-slice: 1 fill;
+  border-image-repeat: repeat;
+  display: flex;
+  align-items: flex-start;
+  padding-top: calc(var(--dialog-px) * 4);
+  padding-left: calc(var(--dialog-px) * 4);
+}
+
+.dialog-checkbox {
+  background-image: url('/images/dialog/checkbox.png');
+  background-size: contain;
+}
+
+.dialog-checkbox.dialog-selected {
+  background-image: url('/images/dialog/checkbox_selected.png');
+}
+
+.dialog-slider {
+  position: relative;
+}
+
+.dialog-slider-track {
+  border: solid calc(var(--dialog-px) * 1) #000;
+  border-image-source: url('/images/dialog/slider.png');
+  border-image-slice: 1 fill;
+  border-image-repeat: repeat;
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+}
+
+.dialog-slider-handle {
+  background-image: url('/images/dialog/slider_handle.png');
+  background-size: contain;
+  position: absolute;
+  top: 0; left: 50%;
+  width: calc(var(--dialog-px) * 8);
+  height: 100%;
+  transform: translateX(-50%);
+}
+
+.dialog-slider-text {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: var(--dialog-px);
+}
+
+.dialog-tooltip {
+  padding: calc(var(--dialog-px) * 4) calc(var(--dialog-px) * 6);
+  border: solid calc(var(--dialog-px) * 2) #220044;
+  border-image-source: url('/images/tooltip.png');
+  border-image-slice: 2 fill;
+  border-image-outset: calc(var(--dialog-px) * 1);
+  width: max-content;
+  max-width: calc(var(--dialog-px) * 150);
+  display: none;
+  position: absolute;
+  pointer-events: none;
+}
+
+.tooltip-container {
+  position: relative;
+}
+
+.tooltip-container:hover > .dialog-tooltip {
+  display: block;
+}
+
+.tooltip-container > .dialog-tooltip .text-component {
+  white-space: pre-wrap;
+  text-align: initial;
+}
+
+/* Device preview variants */
+.preview-wrapper.device-tablet .preview-dialog { max-width: 600px; }
+.preview-wrapper.device-mobile .preview-dialog { max-width: 350px; }
+
+/* Preview text input (interactive within Minecraft preview) */
+.preview-text-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: MinecraftSeven, sans-serif;
+  color: #fff;
+  width: 100%;
+  height: 100%;
+}

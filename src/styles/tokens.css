@@ -1,0 +1,193 @@
+/* M3 Color Tokens — Dark scheme (default), seeded from amber #f39d04 */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  /* Primary — amber */
+  --md-sys-color-primary: #f5b731;
+  --md-sys-color-on-primary: #3e2000;
+  --md-sys-color-primary-container: #5a3000;
+  --md-sys-color-on-primary-container: #ffddb0;
+
+  /* Secondary — warm tan */
+  --md-sys-color-secondary: #d8bc8d;
+  --md-sys-color-on-secondary: #3a2e1a;
+  --md-sys-color-secondary-container: #533e28;
+  --md-sys-color-on-secondary-container: #f5ddb4;
+
+  /* Tertiary — green accent */
+  --md-sys-color-tertiary: #b5cca9;
+  --md-sys-color-on-tertiary: #213519;
+  --md-sys-color-tertiary-container: #374c2e;
+  --md-sys-color-on-tertiary-container: #d1e8c4;
+
+  /* Error */
+  --md-sys-color-error: #ffb4ab;
+  --md-sys-color-on-error: #690005;
+  --md-sys-color-error-container: #93000a;
+  --md-sys-color-on-error-container: #ffdad6;
+
+  /* Surface */
+  --md-sys-color-surface: #181210;
+  --md-sys-color-on-surface: #ede0d4;
+  --md-sys-color-surface-variant: #3b2d24;
+  --md-sys-color-on-surface-variant: #d1b9a9;
+
+  /* Surface containers */
+  --md-sys-color-surface-container-lowest: #120d0b;
+  --md-sys-color-surface-container-low: #201a17;
+  --md-sys-color-surface-container: #251e1b;
+  --md-sys-color-surface-container-high: #2f2724;
+  --md-sys-color-surface-container-highest: #3b3130;
+
+  /* Outline */
+  --md-sys-color-outline: #9e7c6c;
+  --md-sys-color-outline-variant: #533f36;
+
+  /* Background */
+  --md-sys-color-background: #181210;
+  --md-sys-color-on-background: #ede0d4;
+
+  /* Inverse */
+  --md-sys-color-inverse-surface: #ede0d4;
+  --md-sys-color-inverse-on-surface: #362f2c;
+  --md-sys-color-inverse-primary: #7a4f00;
+
+  /* Scrim & shadow */
+  --md-sys-color-scrim: #000000;
+  --md-sys-color-shadow: #000000;
+
+  /* Shape tokens */
+  --md-sys-shape-corner-none: 0px;
+  --md-sys-shape-corner-extra-small: 4px;
+  --md-sys-shape-corner-small: 8px;
+  --md-sys-shape-corner-medium: 12px;
+  --md-sys-shape-corner-large: 16px;
+  --md-sys-shape-corner-extra-large: 28px;
+  --md-sys-shape-corner-full: 9999px;
+
+  /* Typeface */
+  --md-ref-typeface-brand: 'Inter', sans-serif;
+  --md-ref-typeface-plain: 'Inter', sans-serif;
+
+  /* Legacy compat shims — point to M3 tokens */
+  --primary: var(--md-sys-color-primary);
+  --primary-light: var(--md-sys-color-primary);
+  --primary-dark: #c27d03;
+  --secondary: var(--md-sys-color-secondary);
+  --accent: var(--md-sys-color-primary);
+  --success: var(--md-sys-color-tertiary);
+  --danger: var(--md-sys-color-error);
+  --info: #5f9de8;
+  --warning: #f5b731;
+  --bg-dark: var(--md-sys-color-surface);
+  --bg-card: var(--md-sys-color-surface-container-low);
+  --bg-input: var(--md-sys-color-surface-container);
+  --bg-hover: var(--md-sys-color-surface-variant);
+  --bg-click: var(--md-sys-color-secondary-container);
+  --text-primary: var(--md-sys-color-on-surface);
+  --text-secondary: var(--md-sys-color-on-surface-variant);
+  --text-muted: var(--md-sys-color-outline);
+  --border: var(--md-sys-color-outline-variant);
+  --shadow: rgba(0, 0, 0, 0.5);
+
+  /* Gradients */
+  --gradient-bg: linear-gradient(135deg, #181210 0%, #251e1b 50%, #181210 100%);
+  --gradient-radial: radial-gradient(circle at 20% 50%, rgba(245, 183, 49, 0.07) 0%, transparent 50%),
+                     radial-gradient(circle at 80% 80%, rgba(245, 183, 49, 0.07) 0%, transparent 50%),
+                     radial-gradient(circle at 40% 20%, rgba(245, 183, 49, 0.04) 0%, transparent 50%);
+
+  /* Elevations */
+  --elevation-1: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  --elevation-2: 0 3px 6px rgba(0,0,0,0.15), 0 2px 4px rgba(0,0,0,0.12);
+  --elevation-3: 0 10px 20px rgba(0,0,0,0.15), 0 3px 6px rgba(0,0,0,0.10);
+  --elevation-4: 0 15px 25px rgba(0,0,0,0.15), 0 5px 10px rgba(0,0,0,0.05);
+  --elevation-6: 0 20px 40px rgba(0,0,0,0.2);
+
+  /* Spacing */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+
+  /* Transitions */
+  --transition-fast: 0.15s;
+  --transition-base: 0.2s;
+  --transition-slow: 0.3s;
+  --transition-easing: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Light theme */
+:root[data-theme="light"] {
+  --md-sys-color-primary: #7a4f00;
+  --md-sys-color-on-primary: #ffffff;
+  --md-sys-color-primary-container: #ffddb0;
+  --md-sys-color-on-primary-container: #281700;
+
+  --md-sys-color-secondary: #6f5b3e;
+  --md-sys-color-on-secondary: #ffffff;
+  --md-sys-color-secondary-container: #f9debb;
+  --md-sys-color-on-secondary-container: #271904;
+
+  --md-sys-color-tertiary: #4b6640;
+  --md-sys-color-on-tertiary: #ffffff;
+  --md-sys-color-tertiary-container: #cdecc0;
+  --md-sys-color-on-tertiary-container: #082200;
+
+  --md-sys-color-error: #ba1a1a;
+  --md-sys-color-on-error: #ffffff;
+  --md-sys-color-error-container: #ffdad6;
+  --md-sys-color-on-error-container: #410002;
+
+  --md-sys-color-surface: #fff8f5;
+  --md-sys-color-on-surface: #201a17;
+  --md-sys-color-surface-variant: #f4dece;
+  --md-sys-color-on-surface-variant: #52443d;
+
+  --md-sys-color-surface-container-lowest: #ffffff;
+  --md-sys-color-surface-container-low: #fff1eb;
+  --md-sys-color-surface-container: #fdeae3;
+  --md-sys-color-surface-container-high: #f7e5de;
+  --md-sys-color-surface-container-highest: #f1dfd8;
+
+  --md-sys-color-outline: #85736a;
+  --md-sys-color-outline-variant: #d8c2b8;
+
+  --md-sys-color-background: #fff8f5;
+  --md-sys-color-on-background: #201a17;
+
+  --md-sys-color-inverse-surface: #362f2c;
+  --md-sys-color-inverse-on-surface: #fbeeea;
+  --md-sys-color-inverse-primary: #f5b731;
+
+  /* Compat shims for light */
+  --primary: var(--md-sys-color-primary);
+  --primary-light: #d97706;
+  --primary-dark: #b45309;
+  --success: #4b6640;
+  --danger: #ba1a1a;
+  --bg-dark: var(--md-sys-color-surface);
+  --bg-card: var(--md-sys-color-surface-container-lowest);
+  --bg-input: var(--md-sys-color-surface-container-low);
+  --bg-hover: var(--md-sys-color-surface-variant);
+  --bg-click: var(--md-sys-color-primary-container);
+  --text-primary: var(--md-sys-color-on-surface);
+  --text-secondary: var(--md-sys-color-on-surface-variant);
+  --text-muted: var(--md-sys-color-outline);
+  --border: var(--md-sys-color-outline-variant);
+  --shadow: rgba(0, 0, 0, 0.1);
+
+  --gradient-bg: linear-gradient(135deg, #fff8f5 0%, #f9debb 50%, #fff8f5 100%);
+  --gradient-radial: radial-gradient(circle at 20% 50%, rgba(122, 79, 0, 0.04) 0%, transparent 50%),
+                     radial-gradient(circle at 80% 80%, rgba(122, 79, 0, 0.04) 0%, transparent 50%);
+
+  --elevation-1: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.16);
+  --elevation-2: 0 3px 6px rgba(0,0,0,0.10), 0 2px 4px rgba(0,0,0,0.08);
+  --elevation-3: 0 10px 20px rgba(0,0,0,0.10), 0 3px 6px rgba(0,0,0,0.05);
+  --elevation-4: 0 15px 25px rgba(0,0,0,0.10), 0 5px 10px rgba(0,0,0,0.03);
+  --elevation-6: 0 20px 40px rgba(0,0,0,0.15);
+}
