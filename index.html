@@ -486,111 +486,117 @@
   </div><!-- /app-content -->
 
   <!-- ═══════════════════════════════ Action Modal ══════════════════════════════ -->
-  <md-dialog id="action-modal" aria-labelledby="action-modal-headline">
-    <div slot="headline">Add Action</div>
+  <dialog class="m3-dialog" id="action-modal" aria-labelledby="action-modal-title">
+    <div class="m3-dialog-container">
+      <h2 class="m3-dialog-headline" id="action-modal-title">Add Action</h2>
 
-    <div slot="content">
-      <md-outlined-select id="action-type" label="Action Type" aria-label="Action type">
-        <md-select-option value="message" selected>
-          <div slot="headline">Message</div>
-        </md-select-option>
-        <md-select-option value="open_dialog">
-          <div slot="headline">Open Dialog</div>
-        </md-select-option>
-        <md-select-option value="open_random_dialog">
-          <div slot="headline">Random Dialog</div>
-        </md-select-option>
-        <md-select-option value="console_command">
-          <div slot="headline">Console Command</div>
-        </md-select-option>
-        <md-select-option value="player_command">
-          <div slot="headline">Player Command</div>
-        </md-select-option>
-        <md-select-option value="send_to_server">
-          <div slot="headline">Transfer Server</div>
-        </md-select-option>
-      </md-outlined-select>
+      <div class="m3-dialog-content">
+        <md-outlined-select id="action-type" label="Action Type" aria-label="Action type">
+          <md-select-option value="message" selected>
+            <div slot="headline">Message</div>
+          </md-select-option>
+          <md-select-option value="open_dialog">
+            <div slot="headline">Open Dialog</div>
+          </md-select-option>
+          <md-select-option value="open_random_dialog">
+            <div slot="headline">Random Dialog</div>
+          </md-select-option>
+          <md-select-option value="console_command">
+            <div slot="headline">Console Command</div>
+          </md-select-option>
+          <md-select-option value="player_command">
+            <div slot="headline">Player Command</div>
+          </md-select-option>
+          <md-select-option value="send_to_server">
+            <div slot="headline">Transfer Server</div>
+          </md-select-option>
+        </md-outlined-select>
 
-      <div id="action-fields"></div>
+        <div id="action-fields"></div>
+      </div>
+
+      <div class="m3-dialog-actions">
+        <md-text-button id="cancel-action-btn">Cancel</md-text-button>
+        <md-filled-tonal-button id="confirm-action-btn">Add Action</md-filled-tonal-button>
+      </div>
     </div>
-
-    <div slot="actions">
-      <md-text-button id="cancel-action-btn">Cancel</md-text-button>
-      <md-filled-tonal-button id="confirm-action-btn">Add Action</md-filled-tonal-button>
-    </div>
-  </md-dialog>
+  </dialog>
 
   <!-- ═══════════════════════════════ Option Modal ══════════════════════════════ -->
-  <md-dialog id="option-modal" aria-labelledby="option-modal-headline">
-    <div slot="headline">Add Option</div>
+  <dialog class="m3-dialog" id="option-modal" aria-labelledby="option-modal-title">
+    <div class="m3-dialog-container">
+      <h2 class="m3-dialog-headline" id="option-modal-title">Add Option</h2>
 
-    <div slot="content">
-      <md-outlined-text-field
-        id="option-value"
-        label="Value (placeholder)"
-        placeholder="red">
-      </md-outlined-text-field>
+      <div class="m3-dialog-content">
+        <md-outlined-text-field
+          id="option-value"
+          label="Value (placeholder)"
+          placeholder="red">
+        </md-outlined-text-field>
 
-      <md-outlined-text-field
-        id="option-display"
-        label="Display Text"
-        placeholder="&lt;color:red&gt;Red&lt;/color&gt;">
-      </md-outlined-text-field>
+        <md-outlined-text-field
+          id="option-display"
+          label="Display Text"
+          placeholder="&lt;color:red&gt;Red&lt;/color&gt;">
+        </md-outlined-text-field>
 
-      <div class="checkbox-row">
-        <md-checkbox id="option-initial" aria-label="Set as default selection"></md-checkbox>
-        <label class="field-label" for="option-initial">Default Selection</label>
+        <div class="checkbox-row">
+          <md-checkbox id="option-initial" aria-label="Set as default selection"></md-checkbox>
+          <label class="field-label" for="option-initial">Default Selection</label>
+        </div>
+      </div>
+
+      <div class="m3-dialog-actions">
+        <md-text-button id="cancel-option-btn">Cancel</md-text-button>
+        <md-filled-tonal-button id="confirm-option-btn">Add Option</md-filled-tonal-button>
       </div>
     </div>
-
-    <div slot="actions">
-      <md-text-button id="cancel-option-btn">Cancel</md-text-button>
-      <md-filled-tonal-button id="confirm-option-btn">Add Option</md-filled-tonal-button>
-    </div>
-  </md-dialog>
+  </dialog>
 
   <!-- ═══════════════════════════════ Presets Modal ════════════════════════════ -->
-  <md-dialog id="presets-modal" aria-labelledby="presets-modal-headline">
-    <div slot="headline">Choose a Preset</div>
+  <dialog class="m3-dialog" id="presets-modal" aria-labelledby="presets-modal-title">
+    <div class="m3-dialog-container">
+      <h2 class="m3-dialog-headline" id="presets-modal-title">Choose a Preset</h2>
 
-    <div slot="content">
-      <div class="presets-grid">
-        <button class="preset-card" data-preset="welcome" aria-label="Load Welcome preset">
-          <span class="material-symbols-outlined preset-icon" aria-hidden="true">waving_hand</span>
-          <div class="preset-title">Welcome</div>
-          <div class="preset-description">Server welcome dialog with greeting message</div>
-        </button>
+      <div class="m3-dialog-content">
+        <div class="presets-grid">
+          <button class="preset-card" data-preset="welcome" aria-label="Load Welcome preset">
+            <span class="material-symbols-outlined preset-icon" aria-hidden="true">waving_hand</span>
+            <div class="preset-title">Welcome</div>
+            <div class="preset-description">Server welcome dialog with greeting message</div>
+          </button>
 
-        <button class="preset-card" data-preset="confirm" aria-label="Load Confirm preset">
-          <span class="material-symbols-outlined preset-icon" aria-hidden="true">check_circle</span>
-          <div class="preset-title">Confirm</div>
-          <div class="preset-description">Confirmation dialog for important actions</div>
-        </button>
+          <button class="preset-card" data-preset="confirm" aria-label="Load Confirm preset">
+            <span class="material-symbols-outlined preset-icon" aria-hidden="true">check_circle</span>
+            <div class="preset-title">Confirm</div>
+            <div class="preset-description">Confirmation dialog for important actions</div>
+          </button>
 
-        <button class="preset-card" data-preset="survey" aria-label="Load Survey preset">
-          <span class="material-symbols-outlined preset-icon" aria-hidden="true">poll</span>
-          <div class="preset-title">Survey</div>
-          <div class="preset-description">Player feedback form with ratings</div>
-        </button>
+          <button class="preset-card" data-preset="survey" aria-label="Load Survey preset">
+            <span class="material-symbols-outlined preset-icon" aria-hidden="true">poll</span>
+            <div class="preset-title">Survey</div>
+            <div class="preset-description">Player feedback form with ratings</div>
+          </button>
 
-        <button class="preset-card" data-preset="settings" aria-label="Load Settings preset">
-          <span class="material-symbols-outlined preset-icon" aria-hidden="true">tune</span>
-          <div class="preset-title">Settings</div>
-          <div class="preset-description">Configuration dialog with preferences</div>
-        </button>
+          <button class="preset-card" data-preset="settings" aria-label="Load Settings preset">
+            <span class="material-symbols-outlined preset-icon" aria-hidden="true">tune</span>
+            <div class="preset-title">Settings</div>
+            <div class="preset-description">Configuration dialog with preferences</div>
+          </button>
 
-        <button class="preset-card" data-preset="warning" aria-label="Load Warning preset">
-          <span class="material-symbols-outlined preset-icon" aria-hidden="true">warning</span>
-          <div class="preset-title">Warning</div>
-          <div class="preset-description">Critical warning dialog with alert</div>
-        </button>
+          <button class="preset-card" data-preset="warning" aria-label="Load Warning preset">
+            <span class="material-symbols-outlined preset-icon" aria-hidden="true">warning</span>
+            <div class="preset-title">Warning</div>
+            <div class="preset-description">Critical warning dialog with alert</div>
+          </button>
+        </div>
+      </div>
+
+      <div class="m3-dialog-actions">
+        <md-text-button id="cancel-presets-btn">Cancel</md-text-button>
       </div>
     </div>
-
-    <div slot="actions">
-      <md-text-button id="cancel-presets-btn">Cancel</md-text-button>
-    </div>
-  </md-dialog>
+  </dialog>
 
   <!-- Vercel Analytics -->
   <script>

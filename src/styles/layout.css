@@ -844,10 +844,83 @@ md-tabs {
   line-height: 1.4;
 }
 
-/* md-dialog content adjustments */
-md-dialog [slot="content"] { padding-top: 0.5rem; }
-md-dialog [slot="content"] .mc-label { margin-top: 1rem; }
-md-dialog [slot="content"] .mc-label:first-child { margin-top: 0; }
+/* ══════════════════════════════════════════════════════════════════════════════
+   M3 DIALOG — native <dialog> implementation per Material Design 3 spec
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+/* Scrim */
+.m3-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.32);
+}
+
+/* Container */
+.m3-dialog {
+  border: none;
+  border-radius: var(--md-sys-shape-corner-extra-large);
+  background: var(--md-sys-color-surface-container-high);
+  color: var(--md-sys-color-on-surface);
+  padding: 0;
+  width: min(560px, calc(100vw - 48px));
+  min-width: 280px;
+  max-width: min(560px, calc(100vw - 48px));
+  min-height: 0;
+  box-shadow: var(--elevation-3);
+  font-family: var(--md-ref-typeface-brand);
+  /* Browser UA handles centering via position: fixed; inset: 0; margin: auto */
+  overflow: visible; /* allow md-outlined-select dropdown to escape */
+}
+
+.m3-dialog-container {
+  display: flex;
+  flex-direction: column;
+  min-height: inherit;
+}
+
+/* Headline */
+.m3-dialog-headline {
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 2rem;
+  color: var(--md-sys-color-on-surface);
+  padding: 24px 24px 0;
+  margin: 0;
+}
+
+/* Content */
+.m3-dialog-content {
+  padding: 16px 24px 0;
+  color: var(--md-sys-color-on-surface-variant);
+  font-size: var(--typescale-body-md-size);
+  line-height: var(--typescale-body-md-line);
+  flex: 1;
+  overflow-y: auto;
+  max-height: calc(80vh - 120px);
+  overflow-x: visible;
+}
+
+.m3-dialog-content .mc-label { margin-top: 1rem; }
+.m3-dialog-content .mc-label:first-child { margin-top: 0; }
+
+/* Ensure MD text fields fill dialog */
+.m3-dialog-content md-outlined-text-field,
+.m3-dialog-content md-outlined-select {
+  margin-bottom: 0.75rem;
+}
+
+/* Actions */
+.m3-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 24px 24px;
+}
+
+/* Presets dialog — wider */
+#presets-modal {
+  width: min(900px, calc(100vw - 48px));
+  max-width: min(900px, calc(100vw - 48px));
+}
 
 /* ══════════════════════════════════════════════════════════════════════════════
    FOOTER

@@ -11,7 +11,7 @@ export function openActionModal(buttonIndex) {
   updateActionFields();
 
   const modal = document.getElementById('action-modal');
-  if (modal) modal.show();
+  if (modal) modal.showModal();
 }
 
 export function closeActionModal() {
@@ -108,7 +108,7 @@ export function updateActionFields() {
 export function openOptionModal(selectIndex) {
   editorState.currentSelectIndex = selectIndex;
   const modal = document.getElementById('option-modal');
-  if (modal) modal.show();
+  if (modal) modal.showModal();
 }
 
 export function closeOptionModal() {
@@ -125,7 +125,7 @@ export function confirmOption() {
 
 export function openPresetsModal() {
   const modal = document.getElementById('presets-modal');
-  if (modal) modal.show();
+  if (modal) modal.showModal();
 }
 
 export function closePresetsModal() {
