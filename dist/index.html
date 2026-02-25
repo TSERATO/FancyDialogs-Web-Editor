@@ -9,8 +9,8 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
 
   <!-- Vite entry point — handles all CSS + M3 component imports -->
-  <script type="module" crossorigin src="./assets/index-CZPHUgUW.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-Cd-ZP07p.css">
+  <script type="module" crossorigin src="./assets/index-CNf1qdkN.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-C6KlgUGY.css">
 </head>
 <body>
 
@@ -248,169 +248,207 @@
 
     <!-- ─────────────────── Instructions Page ─────────────────── -->
     <div id="instructions-page" class="page">
-      <div class="instructions-container">
+      <div class="docs-layout">
 
-        <div class="instruction-section">
-          <div class="section-header">
+        <!-- Hero -->
+        <div class="docs-hero">
+          <img src="./favicon.ico" class="docs-hero-icon" alt="">
+          <div class="docs-hero-text">
+            <h1 class="docs-hero-title">FancyDialogs Editor</h1>
+            <p class="docs-hero-subtitle">Create interactive Minecraft dialog interfaces visually — no JSON required. Supports Minecraft 1.21.6+ with the FancyDialogs plugin.</p>
+          </div>
+          <a href="https://github.com/tolnayeu/FancyDialogs-Editor" target="_blank" rel="noopener" class="docs-hero-link">
+            <span class="material-symbols-outlined">open_in_new</span>
+            GitHub
+          </a>
+        </div>
+
+        <!-- Quick Start -->
+        <section class="docs-section">
+          <h2 class="docs-section-title">
             <span class="material-symbols-outlined" aria-hidden="true">rocket_launch</span>
-            <h2>Getting Started</h2>
+            Quick Start
+          </h2>
+          <div class="steps-row">
+            <div class="step-card">
+              <div class="step-num">1</div>
+              <span class="material-symbols-outlined step-icon" aria-hidden="true">badge</span>
+              <h3>Basic Info</h3>
+              <p>Set a unique dialog ID, add a formatted title, and toggle ESC-to-close.</p>
+            </div>
+            <div class="step-card">
+              <div class="step-num">2</div>
+              <span class="material-symbols-outlined step-icon" aria-hidden="true">article</span>
+              <h3>Body Text</h3>
+              <p>Add body lines with full MiniMessage color and style support.</p>
+            </div>
+            <div class="step-card">
+              <div class="step-num">3</div>
+              <span class="material-symbols-outlined step-icon" aria-hidden="true">tune</span>
+              <h3>Inputs</h3>
+              <p>Add text fields, dropdowns, and checkboxes to collect player input.</p>
+            </div>
+            <div class="step-card">
+              <div class="step-num">4</div>
+              <span class="material-symbols-outlined step-icon" aria-hidden="true">smart_button</span>
+              <h3>Buttons</h3>
+              <p>Every dialog needs at least one button. Each can trigger multiple actions.</p>
+            </div>
+            <div class="step-card">
+              <div class="step-num">5</div>
+              <span class="material-symbols-outlined step-icon" aria-hidden="true">download</span>
+              <h3>Export</h3>
+              <p>Download the JSON and drop it in your FancyDialogs plugin folder.</p>
+            </div>
           </div>
-          <p>The FancyDialogs Editor helps you create interactive dialog interfaces for Minecraft 1.21.6+ without writing JSON manually.</p>
+        </section>
+
+        <!-- Formatting + Placeholders -->
+        <div class="docs-two-col">
+          <section class="docs-section">
+            <h2 class="docs-section-title">
+              <span class="material-symbols-outlined" aria-hidden="true">palette</span>
+              MiniMessage Formatting
+            </h2>
+            <div class="code-table">
+              <div class="code-row"><code>&lt;b&gt;text&lt;/b&gt;</code><span>Bold</span></div>
+              <div class="code-row"><code>&lt;i&gt;text&lt;/i&gt;</code><span>Italic</span></div>
+              <div class="code-row"><code>&lt;u&gt;text&lt;/u&gt;</code><span>Underline</span></div>
+              <div class="code-row"><code>&lt;color:#ff7300&gt;text&lt;/color&gt;</code><span>Hex color</span></div>
+              <div class="code-row"><code>&lt;color:red&gt;text&lt;/color&gt;</code><span>Named color</span></div>
+              <div class="code-row"><code>&lt;gradient:#f00:#00f&gt;text&lt;/gradient&gt;</code><span>Gradient</span></div>
+              <div class="code-row"><code>&lt;rainbow&gt;text&lt;/rainbow&gt;</code><span>Rainbow</span></div>
+            </div>
+          </section>
+
+          <section class="docs-section">
+            <h2 class="docs-section-title">
+              <span class="material-symbols-outlined" aria-hidden="true">code</span>
+              Placeholder Syntax
+            </h2>
+            <div class="code-table">
+              <div class="code-row"><code>%player_name%</code><span>PlaceholderAPI</span></div>
+              <div class="code-row"><code>%vault_eco_balance%</code><span>Plugin placeholders</span></div>
+              <div class="code-row"><code>{field_key}</code><span>Text field value</span></div>
+              <div class="code-row"><code>{dropdown_key}</code><span>Dropdown selection</span></div>
+              <div class="code-row"><code>{checkbox_key}</code><span>Checkbox state</span></div>
+            </div>
+            <div class="docs-note">
+              <span class="material-symbols-outlined" aria-hidden="true">info</span>
+              Input keys are defined in the editor under the Inputs tab.
+            </div>
+          </section>
         </div>
 
-        <div class="instruction-section">
-          <div class="section-header">
-            <span class="material-symbols-outlined" aria-hidden="true">list</span>
-            <h2>Dialog Creation Workflow</h2>
-          </div>
-          <div class="workflow-steps">
-            <div class="workflow-step">
-              <div class="step-number">1</div>
-              <div class="step-content">
-                <h3>Basic Information Setup</h3>
-                <p>Enter a unique dialog ID, add formatted titles, and toggle ESC-to-close functionality.</p>
-              </div>
-            </div>
-            <div class="workflow-step">
-              <div class="step-number">2</div>
-              <div class="step-content">
-                <h3>Body Text Addition</h3>
-                <p>Add multiple text lines with MiniMessage formatting support.</p>
-              </div>
-            </div>
-            <div class="workflow-step">
-              <div class="step-number">3</div>
-              <div class="step-content">
-                <h3>Input Configuration</h3>
-                <p>Add text fields, dropdown menus, and checkboxes for user input.</p>
-              </div>
-            </div>
-            <div class="workflow-step">
-              <div class="step-number">4</div>
-              <div class="step-content">
-                <h3>Button Creation</h3>
-                <p>Every dialog requires at least one button with customizable labels and actions.</p>
-              </div>
-            </div>
-            <div class="workflow-step">
-              <div class="step-number">5</div>
-              <div class="step-content">
-                <h3>Export</h3>
-                <p>Download the completed dialog as a JSON file for your FancyDialogs plugin folder.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="instruction-section">
-          <div class="section-header">
-            <span class="material-symbols-outlined" aria-hidden="true">palette</span>
-            <h2>Text Formatting</h2>
-          </div>
-          <p>The editor supports MiniMessage format for rich text styling:</p>
-          <div class="example-box">
-            <code>&lt;b&gt;Bold Text&lt;/b&gt;</code>
-            <code>&lt;color:#ff7300&gt;Colored Text&lt;/color&gt;</code>
-            <code>&lt;u&gt;Underlined&lt;/u&gt;</code>
-          </div>
-        </div>
-
-        <div class="instruction-section">
-          <div class="section-header">
+        <!-- Input Types -->
+        <section class="docs-section">
+          <h2 class="docs-section-title">
             <span class="material-symbols-outlined" aria-hidden="true">input</span>
-            <h2>Input Components</h2>
-          </div>
+            Input Types
+          </h2>
           <div class="component-grid">
             <div class="component-card">
               <span class="material-symbols-outlined component-icon" aria-hidden="true">text_fields</span>
               <h3>Text Fields</h3>
-              <p>Single or multi-line input fields with character limits and placeholders.</p>
+              <p>Single or multi-line input with character limits, placeholders, and a unique key for form value access.</p>
             </div>
             <div class="component-card">
               <span class="material-symbols-outlined component-icon" aria-hidden="true">arrow_drop_down_circle</span>
               <h3>Dropdowns</h3>
-              <p>Selection menus with custom options and default values.</p>
+              <p>Select menus with custom display labels, values, and a configurable default selection.</p>
             </div>
             <div class="component-card">
               <span class="material-symbols-outlined component-icon" aria-hidden="true">check_box</span>
               <h3>Checkboxes</h3>
-              <p>Boolean inputs with true/false values and initial states.</p>
+              <p>Boolean toggles with labels, configurable default state, and a key for true/false access.</p>
             </div>
           </div>
-        </div>
+        </section>
 
-        <div class="instruction-section">
-          <div class="section-header">
-            <span class="material-symbols-outlined" aria-hidden="true">code</span>
-            <h2>Placeholder Integration</h2>
-          </div>
-          <p>Use PlaceholderAPI and input placeholders in your dialogs:</p>
-          <div class="example-box">
-            <code>%player_name%</code> — Server placeholders
-            <code>{player_name}</code> — Form input values
-            <code>%vault_eco_balance%</code> — Plugin placeholders
-          </div>
-        </div>
-
-        <div class="instruction-section">
-          <div class="section-header">
+        <!-- Button Actions -->
+        <section class="docs-section">
+          <h2 class="docs-section-title">
             <span class="material-symbols-outlined" aria-hidden="true">touch_app</span>
-            <h2>Button Actions</h2>
-          </div>
+            Button Actions
+          </h2>
+          <p class="docs-section-desc">Each button can trigger multiple actions in sequence. Mix and match as needed.</p>
           <div class="actions-grid">
-            <div class="action-badge">
+            <div class="action-card">
               <span class="material-symbols-outlined" aria-hidden="true">message</span>
-              <span>Message</span>
+              <div><h4>Message</h4><p>Send a chat message to the player</p></div>
             </div>
-            <div class="action-badge">
+            <div class="action-card">
               <span class="material-symbols-outlined" aria-hidden="true">open_in_new</span>
-              <span>Open Dialog</span>
+              <div><h4>Open Dialog</h4><p>Open another dialog by ID</p></div>
             </div>
-            <div class="action-badge">
+            <div class="action-card">
               <span class="material-symbols-outlined" aria-hidden="true">casino</span>
-              <span>Random Dialog</span>
+              <div><h4>Random Dialog</h4><p>Open a random dialog from a list</p></div>
             </div>
-            <div class="action-badge">
+            <div class="action-card">
               <span class="material-symbols-outlined" aria-hidden="true">terminal</span>
-              <span>Console Command</span>
+              <div><h4>Console Command</h4><p>Run a command as the server console</p></div>
             </div>
-            <div class="action-badge">
+            <div class="action-card">
               <span class="material-symbols-outlined" aria-hidden="true">person</span>
-              <span>Player Command</span>
+              <div><h4>Player Command</h4><p>Run a command as the player</p></div>
             </div>
-            <div class="action-badge">
+            <div class="action-card">
               <span class="material-symbols-outlined" aria-hidden="true">cloud_upload</span>
-              <span>Transfer Server</span>
+              <div><h4>Transfer Server</h4><p>Transfer the player to another server</p></div>
             </div>
           </div>
-        </div>
+        </section>
 
-        <div class="instruction-section">
-          <div class="section-header">
-            <span class="material-symbols-outlined" aria-hidden="true">info</span>
-            <h2>Tips &amp; Best Practices</h2>
+        <!-- Keyboard Shortcuts -->
+        <section class="docs-section">
+          <h2 class="docs-section-title">
+            <span class="material-symbols-outlined" aria-hidden="true">keyboard</span>
+            Keyboard Shortcuts
+          </h2>
+          <div class="shortcuts-grid">
+            <div class="shortcut-row"><div class="shortcut-keys"><kbd>Ctrl</kbd><kbd>S</kbd></div><span>Download JSON</span></div>
+            <div class="shortcut-row"><div class="shortcut-keys"><kbd>Ctrl</kbd><kbd>K</kbd></div><span>Copy JSON to clipboard</span></div>
+            <div class="shortcut-row"><div class="shortcut-keys"><kbd>Ctrl</kbd><kbd>O</kbd></div><span>Import JSON file</span></div>
+            <div class="shortcut-row"><div class="shortcut-keys"><kbd>Ctrl</kbd><kbd>Z</kbd></div><span>Undo</span></div>
+            <div class="shortcut-row"><div class="shortcut-keys"><kbd>Ctrl</kbd><kbd>Shift</kbd><kbd>Z</kbd></div><span>Redo</span></div>
+            <div class="shortcut-row"><div class="shortcut-keys"><kbd>Ctrl</kbd><kbd>1–4</kbd></div><span>Switch editor tab</span></div>
+            <div class="shortcut-row"><div class="shortcut-keys"><kbd>Ctrl</kbd><kbd>/</kbd></div><span>Toggle help panel</span></div>
+            <div class="shortcut-row"><div class="shortcut-keys"><kbd>Esc</kbd></div><span>Close open dialog</span></div>
           </div>
+        </section>
+
+        <!-- Tips -->
+        <section class="docs-section">
+          <h2 class="docs-section-title">
+            <span class="material-symbols-outlined" aria-hidden="true">tips_and_updates</span>
+            Tips
+          </h2>
           <div class="tips-list">
             <div class="tip-item">
               <span class="material-symbols-outlined" aria-hidden="true">check_circle</span>
-              <p>Use descriptive dialog IDs to easily identify them</p>
+              <p>Use descriptive IDs like <code>shop_confirm</code> to stay organized across many dialogs</p>
             </div>
             <div class="tip-item">
               <span class="material-symbols-outlined" aria-hidden="true">check_circle</span>
-              <p>Test your dialogs in-game before deploying to production</p>
+              <p>Load a <strong>Preset</strong> from the action bar to get a head start on common dialog types</p>
             </div>
             <div class="tip-item">
               <span class="material-symbols-outlined" aria-hidden="true">check_circle</span>
-              <p>Keep dialog text concise and easy to read</p>
+              <p>The <strong>Live Preview</strong> panel updates in real-time — no need to export to see changes</p>
             </div>
             <div class="tip-item">
               <span class="material-symbols-outlined" aria-hidden="true">check_circle</span>
-              <p>Use the preset templates as starting points</p>
+              <p>Use <kbd>Ctrl+Z</kbd> / <kbd>Ctrl+Shift+Z</kbd> to undo and redo any editor change</p>
+            </div>
+            <div class="tip-item">
+              <span class="material-symbols-outlined" aria-hidden="true">check_circle</span>
+              <p>Use <kbd>Ctrl+K</kbd> to copy JSON and paste it directly into your config — no file download needed</p>
             </div>
           </div>
-        </div>
+        </section>
 
-      </div><!-- /instructions-container -->
+      </div><!-- /docs-layout -->
     </div><!-- /instructions-page -->
 
   </div><!-- /minecraft-container -->

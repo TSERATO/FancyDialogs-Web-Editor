@@ -1,189 +1,230 @@
-/* M3 Color Tokens — Dark scheme (default), FancySpaces palette */
+/* ══════════════════════════════════════════════════════════════════════════════
+   FancyDialogs Editor — Design Tokens
+   M3 Color System + Custom Typography Scale
+   ══════════════════════════════════════════════════════════════════════════════ */
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
+/* ─── Dark scheme (default) ──────────────────────────────────────────────── */
 :root {
+
   /* Primary — warm orange */
-  --md-sys-color-primary: #FFB783;
-  --md-sys-color-on-primary: #4F2500;
-  --md-sys-color-primary-container: #6D390B;
+  --md-sys-color-primary:              #FFB783;
+  --md-sys-color-on-primary:           #4F2500;
+  --md-sys-color-primary-container:    #6D390B;
   --md-sys-color-on-primary-container: #FFDCC5;
 
   /* Secondary — warm beige */
-  --md-sys-color-secondary: #E4BFA7;
-  --md-sys-color-on-secondary: #422B1B;
-  --md-sys-color-secondary-container: #5B412F;
+  --md-sys-color-secondary:              #E4BFA7;
+  --md-sys-color-on-secondary:           #422B1B;
+  --md-sys-color-secondary-container:    #5B412F;
   --md-sys-color-on-secondary-container: #FFDCC5;
 
-  /* Tertiary — golden yellow */
-  --md-sys-color-tertiary: #EEBF6D;
-  --md-sys-color-on-tertiary: #422D00;
-  --md-sys-color-tertiary-container: #5E4200;
+  /* Tertiary — golden amber */
+  --md-sys-color-tertiary:              #EEBF6D;
+  --md-sys-color-on-tertiary:           #422D00;
+  --md-sys-color-tertiary-container:    #5E4200;
   --md-sys-color-on-tertiary-container: #FFDEA8;
 
   /* Error */
-  --md-sys-color-error: #FFB4AB;
-  --md-sys-color-on-error: #690005;
-  --md-sys-color-error-container: #93000A;
+  --md-sys-color-error:              #FFB4AB;
+  --md-sys-color-on-error:           #690005;
+  --md-sys-color-error-container:    #93000A;
   --md-sys-color-on-error-container: #FFDAD6;
 
   /* Surface */
-  --md-sys-color-surface: #19120D;
-  --md-sys-color-on-surface: #F0DFD6;
-  --md-sys-color-surface-variant: #52443B;
+  --md-sys-color-surface:            #19120D;
+  --md-sys-color-on-surface:         #F0DFD6;
+  --md-sys-color-surface-variant:    #52443B;
   --md-sys-color-on-surface-variant: #D6C3B7;
 
-  /* Surface containers */
-  --md-sys-color-surface-container-lowest: #130E09;
-  --md-sys-color-surface-container-low: #1E1510;
-  --md-sys-color-surface-container: #231913;
-  --md-sys-color-surface-container-high: #2D2119;
+  /* Surface containers (darkest → lightest) */
+  --md-sys-color-surface-container-lowest:  #130E09;
+  --md-sys-color-surface-container-low:     #1E1510;
+  --md-sys-color-surface-container:         #231913;
+  --md-sys-color-surface-container-high:    #2D2119;
   --md-sys-color-surface-container-highest: #38281E;
 
   /* Outline */
-  --md-sys-color-outline: #9F8D83;
+  --md-sys-color-outline:         #9F8D83;
   --md-sys-color-outline-variant: #4A3C34;
 
   /* Background */
-  --md-sys-color-background: #19120D;
+  --md-sys-color-background:    #19120D;
   --md-sys-color-on-background: #F0DFD6;
 
   /* Inverse */
-  --md-sys-color-inverse-surface: #F0DFD6;
+  --md-sys-color-inverse-surface:    #F0DFD6;
   --md-sys-color-inverse-on-surface: #382F29;
-  --md-sys-color-inverse-primary: #8A5021;
+  --md-sys-color-inverse-primary:    #8A5021;
 
   /* Scrim & shadow */
-  --md-sys-color-scrim: #000000;
+  --md-sys-color-scrim:  #000000;
   --md-sys-color-shadow: #000000;
 
-  /* Shape tokens */
-  --md-sys-shape-corner-none: 0px;
+  /* ─── Shape tokens ──────────────────────────────────────────────────────── */
+  --md-sys-shape-corner-none:        0px;
   --md-sys-shape-corner-extra-small: 4px;
-  --md-sys-shape-corner-small: 8px;
-  --md-sys-shape-corner-medium: 12px;
-  --md-sys-shape-corner-large: 16px;
+  --md-sys-shape-corner-small:       8px;
+  --md-sys-shape-corner-medium:      12px;
+  --md-sys-shape-corner-large:       16px;
   --md-sys-shape-corner-extra-large: 28px;
-  --md-sys-shape-corner-full: 9999px;
+  --md-sys-shape-corner-full:        9999px;
 
-  /* Typeface */
-  --md-ref-typeface-brand: 'Inter', sans-serif;
-  --md-ref-typeface-plain: 'Inter', sans-serif;
+  /* ─── Typeface ──────────────────────────────────────────────────────────── */
+  --md-ref-typeface-brand: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --md-ref-typeface-plain: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 
-  /* Legacy compat shims — point to M3 tokens */
-  --primary: var(--md-sys-color-primary);
+  /* ─── Typography Scale ──────────────────────────────────────────────────── */
+  --typescale-display-size:         2.25rem;
+  --typescale-display-weight:       700;
+  --typescale-display-line:         1.15;
+
+  --typescale-headline-lg-size:     1.75rem;
+  --typescale-headline-lg-weight:   700;
+  --typescale-headline-lg-line:     1.2;
+
+  --typescale-headline-md-size:     1.375rem;
+  --typescale-headline-md-weight:   600;
+  --typescale-headline-md-line:     1.25;
+
+  --typescale-title-lg-size:        1.125rem;
+  --typescale-title-lg-weight:      600;
+  --typescale-title-lg-line:        1.3;
+
+  --typescale-title-md-size:        1rem;
+  --typescale-title-md-weight:      600;
+  --typescale-title-md-line:        1.4;
+
+  --typescale-body-lg-size:         1rem;
+  --typescale-body-lg-weight:       400;
+  --typescale-body-lg-line:         1.6;
+
+  --typescale-body-md-size:         0.875rem;
+  --typescale-body-md-weight:       400;
+  --typescale-body-md-line:         1.5;
+
+  --typescale-label-lg-size:        0.875rem;
+  --typescale-label-lg-weight:      600;
+  --typescale-label-lg-line:        1.4;
+
+  --typescale-label-md-size:        0.75rem;
+  --typescale-label-md-weight:      600;
+  --typescale-label-md-line:        1.4;
+
+  /* ─── Legacy compat shims ───────────────────────────────────────────────── */
+  --primary:       var(--md-sys-color-primary);
   --primary-light: var(--md-sys-color-primary);
-  --primary-dark: #8A5021;
-  --secondary: var(--md-sys-color-secondary);
-  --accent: var(--md-sys-color-primary);
-  --success: var(--md-sys-color-tertiary);
-  --danger: var(--md-sys-color-error);
-  --info: #5f9de8;
-  --warning: #EEBF6D;
-  --bg-dark: var(--md-sys-color-surface);
-  --bg-card: var(--md-sys-color-surface-container-low);
-  --bg-input: var(--md-sys-color-surface-container);
-  --bg-hover: var(--md-sys-color-surface-variant);
-  --bg-click: var(--md-sys-color-secondary-container);
-  --text-primary: var(--md-sys-color-on-surface);
+  --primary-dark:  #8A5021;
+  --secondary:     var(--md-sys-color-secondary);
+  --accent:        var(--md-sys-color-primary);
+  --success:       var(--md-sys-color-tertiary);
+  --danger:        var(--md-sys-color-error);
+  --info:          var(--md-sys-color-tertiary-container);
+  --warning:       #EEBF6D;
+
+  --bg-dark:    var(--md-sys-color-surface);
+  --bg-card:    var(--md-sys-color-surface-container-low);
+  --bg-input:   var(--md-sys-color-surface-container);
+  --bg-hover:   var(--md-sys-color-surface-variant);
+  --bg-click:   var(--md-sys-color-secondary-container);
+
+  --text-primary:   var(--md-sys-color-on-surface);
   --text-secondary: var(--md-sys-color-on-surface-variant);
-  --text-muted: var(--md-sys-color-outline);
-  --border: var(--md-sys-color-outline-variant);
-  --shadow: rgba(0, 0, 0, 0.5);
+  --text-muted:     var(--md-sys-color-outline);
+  --border:         var(--md-sys-color-outline-variant);
+  --shadow:         rgba(0, 0, 0, 0.5);
 
-  /* Gradients */
+  /* ─── Gradients ─────────────────────────────────────────────────────────── */
   --gradient-bg: linear-gradient(135deg, #19120D 0%, #231913 50%, #19120D 100%);
-  --gradient-radial: radial-gradient(circle at 20% 50%, rgba(255, 183, 131, 0.07) 0%, transparent 50%),
-                     radial-gradient(circle at 80% 80%, rgba(238, 191, 109, 0.07) 0%, transparent 50%),
-                     radial-gradient(circle at 40% 20%, rgba(255, 183, 131, 0.04) 0%, transparent 50%);
+  --gradient-radial:
+    radial-gradient(circle at 20% 50%, rgba(255, 183, 131, 0.07) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(238, 191, 109, 0.07) 0%, transparent 50%),
+    radial-gradient(circle at 40% 20%, rgba(255, 183, 131, 0.04) 0%, transparent 50%);
 
-  /* Elevations */
+  /* ─── Elevations ────────────────────────────────────────────────────────── */
   --elevation-1: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   --elevation-2: 0 3px 6px rgba(0,0,0,0.15), 0 2px 4px rgba(0,0,0,0.12);
   --elevation-3: 0 10px 20px rgba(0,0,0,0.15), 0 3px 6px rgba(0,0,0,0.10);
   --elevation-4: 0 15px 25px rgba(0,0,0,0.15), 0 5px 10px rgba(0,0,0,0.05);
   --elevation-6: 0 20px 40px rgba(0,0,0,0.2);
 
-  /* Spacing */
-  --space-1: 0.25rem;
-  --space-2: 0.5rem;
-  --space-3: 0.75rem;
-  --space-4: 1rem;
-  --space-5: 1.25rem;
-  --space-6: 1.5rem;
-  --space-8: 2rem;
+  /* ─── Spacing ───────────────────────────────────────────────────────────── */
+  --space-1:  0.25rem;
+  --space-2:  0.5rem;
+  --space-3:  0.75rem;
+  --space-4:  1rem;
+  --space-5:  1.25rem;
+  --space-6:  1.5rem;
+  --space-8:  2rem;
   --space-10: 2.5rem;
   --space-12: 3rem;
 
-  /* Transitions */
-  --transition-fast: 0.15s;
-  --transition-base: 0.2s;
-  --transition-slow: 0.3s;
+  /* ─── Transitions ───────────────────────────────────────────────────────── */
+  --transition-fast:   0.15s;
+  --transition-base:   0.2s;
+  --transition-slow:   0.3s;
   --transition-easing: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Light theme */
+/* ─── Light scheme ───────────────────────────────────────────────────────── */
 :root[data-theme="light"] {
-  --md-sys-color-primary: #8A5021;
-  --md-sys-color-on-primary: #ffffff;
-  --md-sys-color-primary-container: #FFDCC5;
+  --md-sys-color-primary:              #8A5021;
+  --md-sys-color-on-primary:           #ffffff;
+  --md-sys-color-primary-container:    #FFDCC5;
   --md-sys-color-on-primary-container: #2D1100;
 
-  --md-sys-color-secondary: #735847;
-  --md-sys-color-on-secondary: #ffffff;
-  --md-sys-color-secondary-container: #FFDCC5;
+  --md-sys-color-secondary:              #735847;
+  --md-sys-color-on-secondary:           #ffffff;
+  --md-sys-color-secondary-container:    #FFDCC5;
   --md-sys-color-on-secondary-container: #2A1608;
 
-  --md-sys-color-tertiary: #6B5A00;
-  --md-sys-color-on-tertiary: #ffffff;
-  --md-sys-color-tertiary-container: #FFDEA8;
+  --md-sys-color-tertiary:              #6B5A00;
+  --md-sys-color-on-tertiary:           #ffffff;
+  --md-sys-color-tertiary-container:    #FFDEA8;
   --md-sys-color-on-tertiary-container: #221B00;
 
-  --md-sys-color-error: #BA1A1A;
-  --md-sys-color-on-error: #ffffff;
-  --md-sys-color-error-container: #FFDAD6;
+  --md-sys-color-error:              #BA1A1A;
+  --md-sys-color-on-error:           #ffffff;
+  --md-sys-color-error-container:    #FFDAD6;
   --md-sys-color-on-error-container: #410002;
 
-  --md-sys-color-surface: #FFF8F5;
-  --md-sys-color-on-surface: #201611;
-  --md-sys-color-surface-variant: #F0DFD6;
+  --md-sys-color-surface:            #FFF8F5;
+  --md-sys-color-on-surface:         #201611;
+  --md-sys-color-surface-variant:    #F0DFD6;
   --md-sys-color-on-surface-variant: #52443B;
 
-  --md-sys-color-surface-container-lowest: #ffffff;
-  --md-sys-color-surface-container-low: #FFF1EB;
-  --md-sys-color-surface-container: #FDEAE3;
-  --md-sys-color-surface-container-high: #F7E4DC;
+  --md-sys-color-surface-container-lowest:  #ffffff;
+  --md-sys-color-surface-container-low:     #FFF1EB;
+  --md-sys-color-surface-container:         #FDEAE3;
+  --md-sys-color-surface-container-high:    #F7E4DC;
   --md-sys-color-surface-container-highest: #F1DED6;
 
-  --md-sys-color-outline: #7C6B62;
+  --md-sys-color-outline:         #7C6B62;
   --md-sys-color-outline-variant: #D6C3B7;
 
-  --md-sys-color-background: #FFF8F5;
+  --md-sys-color-background:    #FFF8F5;
   --md-sys-color-on-background: #201611;
 
-  --md-sys-color-inverse-surface: #382F29;
+  --md-sys-color-inverse-surface:    #382F29;
   --md-sys-color-inverse-on-surface: #FBEEE9;
-  --md-sys-color-inverse-primary: #FFB783;
+  --md-sys-color-inverse-primary:    #FFB783;
 
-  /* Compat shims for light */
-  --primary: var(--md-sys-color-primary);
   --primary-light: #B56A30;
-  --primary-dark: #6D390B;
-  --success: #6B5A00;
-  --danger: #BA1A1A;
-  --bg-dark: var(--md-sys-color-surface);
-  --bg-card: var(--md-sys-color-surface-container-lowest);
-  --bg-input: var(--md-sys-color-surface-container-low);
-  --bg-hover: var(--md-sys-color-surface-variant);
-  --bg-click: var(--md-sys-color-primary-container);
-  --text-primary: var(--md-sys-color-on-surface);
-  --text-secondary: var(--md-sys-color-on-surface-variant);
-  --text-muted: var(--md-sys-color-outline);
-  --border: var(--md-sys-color-outline-variant);
-  --shadow: rgba(0, 0, 0, 0.1);
+  --primary-dark:  #6D390B;
+  --success:       #6B5A00;
+  --danger:        #BA1A1A;
+  --bg-dark:       var(--md-sys-color-surface);
+  --bg-card:       var(--md-sys-color-surface-container-lowest);
+  --bg-input:      var(--md-sys-color-surface-container-low);
+  --bg-hover:      var(--md-sys-color-surface-variant);
+  --bg-click:      var(--md-sys-color-primary-container);
+  --shadow:        rgba(0, 0, 0, 0.1);
 
   --gradient-bg: linear-gradient(135deg, #FFF8F5 0%, #FDEAE3 50%, #FFF8F5 100%);
-  --gradient-radial: radial-gradient(circle at 20% 50%, rgba(138, 80, 33, 0.04) 0%, transparent 50%),
-                     radial-gradient(circle at 80% 80%, rgba(138, 80, 33, 0.04) 0%, transparent 50%);
+  --gradient-radial:
+    radial-gradient(circle at 20% 50%, rgba(138, 80, 33, 0.04) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(138, 80, 33, 0.04) 0%, transparent 50%);
 
   --elevation-1: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.16);
   --elevation-2: 0 3px 6px rgba(0,0,0,0.10), 0 2px 4px rgba(0,0,0,0.08);
