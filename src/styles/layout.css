@@ -983,7 +983,7 @@ md-dialog [slot="content"] .mc-label:first-child {
   position: fixed;
   top: 0; left: 0;
   width: 100%; height: 100%;
-  background: linear-gradient(135deg, #19120D 0%, #231913 50%, #19120D 100%);
+  background: #19120D;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -991,82 +991,10 @@ md-dialog [slot="content"] .mc-label:first-child {
   transition: opacity var(--transition-base) ease;
 }
 
-.preloader-wrapper { text-align: center; }
-
-.spinner {
-  width: 64px;
-  height: 64px;
-  margin: 0 auto 1.5rem;
-  position: relative;
-  animation: rotate 2s linear infinite;
-}
-
-.spinner-layer {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border-color: var(--md-sys-color-primary);
-}
-
-.circle-clipper {
-  display: inline-block;
-  position: relative;
-  width: 50%;
-  height: 100%;
-  overflow: hidden;
-}
-
-.circle-clipper.left { float: left; }
-.circle-clipper.right { float: right; }
-
-.circle-clipper .circle {
-  width: 200%;
-  height: 100%;
-  border-width: 3px;
-  border-style: solid;
-  border-color: var(--md-sys-color-primary) var(--md-sys-color-primary) transparent transparent;
-  border-radius: 50%;
-  position: absolute;
-  top: 0; right: 0; bottom: 0;
-}
-
-.circle-clipper.left .circle {
-  left: 0;
-  border-right-color: transparent;
-  transform: rotate(129deg);
-  animation: left-spin 1.3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-}
-
-.circle-clipper.right .circle {
-  left: -100%;
-  border-left-color: transparent;
-  transform: rotate(-129deg);
-  animation: right-spin 1.3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-}
-
-.gap-patch {
-  position: absolute;
-  top: 0; left: 45%;
-  width: 10%; height: 100%;
-  overflow: hidden;
-}
-
-.gap-patch .circle {
-  width: 1000%;
-  left: -450%;
-  border-width: 3px;
-  border-style: solid;
-  border-color: var(--md-sys-color-primary) transparent transparent var(--md-sys-color-primary);
-  border-radius: 50%;
-}
-
-.preloader-text {
-  color: var(--md-sys-color-primary);
-  font-size: 1rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  animation: pulse 1.5s ease-in-out infinite;
+.preloader-spinner {
+  --md-circular-progress-active-indicator-color: var(--md-sys-color-primary);
+  --md-circular-progress-size: 64px;
+  --md-circular-progress-active-indicator-width: 8;
 }
 
 /* === Toast === */
@@ -1564,20 +1492,6 @@ md-dialog [slot="content"] .mc-label:first-child {
 ::-webkit-scrollbar-thumb:hover { background: var(--md-sys-color-primary); }
 
 /* === Animations === */
-@keyframes rotate { 100% { transform: rotate(360deg); } }
-
-@keyframes left-spin {
-  0% { transform: rotate(130deg); }
-  50% { transform: rotate(-5deg); }
-  100% { transform: rotate(130deg); }
-}
-
-@keyframes right-spin {
-  0% { transform: rotate(-130deg); }
-  50% { transform: rotate(5deg); }
-  100% { transform: rotate(-130deg); }
-}
-
 @keyframes pulse {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.5; }
