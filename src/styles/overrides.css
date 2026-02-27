@@ -1,0 +1,152 @@
+/* ══════════════════════════════════════════════════════════════════════════════
+   FancyDialogs Editor — @material/web Component Overrides
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+/* ─── Filled Button ─────────────────────────────────────────────────────────── */
+md-filled-button {
+  --md-filled-button-container-shape:    var(--md-sys-shape-corner-full);
+  --md-filled-button-container-color:    var(--md-sys-color-primary);
+  --md-filled-button-label-text-color:   var(--md-sys-color-on-primary);
+  --md-filled-button-icon-color:         var(--md-sys-color-on-primary);
+  --md-filled-button-container-height:   44px;
+  --md-filled-button-leading-space:      40px;
+  --md-filled-button-trailing-space:     40px;
+  --md-filled-button-label-text-font:    var(--md-ref-typeface-brand);
+  --md-filled-button-label-text-weight:  700;
+  --md-filled-button-label-text-size:    0.875rem;
+  --md-filled-button-icon-size:          1.125rem;
+}
+
+/* ─── Filled Tonal Button ───────────────────────────────────────────────────── */
+md-filled-tonal-button {
+  --md-filled-tonal-button-container-shape:    var(--md-sys-shape-corner-full);
+  --md-filled-tonal-button-container-color:    var(--md-sys-color-secondary-container);
+  --md-filled-tonal-button-label-text-color:   var(--md-sys-color-on-secondary-container);
+  --md-filled-tonal-button-icon-color:         var(--md-sys-color-on-secondary-container);
+  --md-filled-tonal-button-hover-state-layer-color: var(--md-sys-color-on-secondary-container);
+  --md-filled-tonal-button-container-height:   44px;
+  --md-filled-tonal-button-leading-space:      40px;
+  --md-filled-tonal-button-trailing-space:     40px;
+  --md-filled-tonal-button-label-text-font:    var(--md-ref-typeface-brand);
+  --md-filled-tonal-button-label-text-weight:  700;
+  --md-filled-tonal-button-label-text-size:    0.875rem;
+  --md-filled-tonal-button-icon-size:          1.125rem;
+}
+
+/* ─── Outlined Button ───────────────────────────────────────────────────────── */
+md-outlined-button {
+  --md-outlined-button-container-shape:     var(--md-sys-shape-corner-full);
+  --md-outlined-button-outline-color:       var(--md-sys-color-outline);
+  --md-outlined-button-label-text-color:    var(--md-sys-color-primary);
+  --md-outlined-button-hover-outline-color: var(--md-sys-color-primary);
+  --md-outlined-button-container-height:    44px;
+  --md-outlined-button-leading-space:       40px;
+  --md-outlined-button-trailing-space:      40px;
+  --md-outlined-button-label-text-font:     var(--md-ref-typeface-brand);
+  --md-outlined-button-label-text-weight:   700;
+  --md-outlined-button-label-text-size:     0.875rem;
+  --md-outlined-button-icon-size:           1.125rem;
+}
+
+/* ─── Text Button ───────────────────────────────────────────────────────────── */
+md-text-button {
+  --md-text-button-label-text-color:       var(--md-sys-color-primary);
+  --md-text-button-hover-label-text-color: var(--md-sys-color-primary);
+  --md-text-button-label-text-font:        var(--md-ref-typeface-brand);
+  --md-text-button-label-text-weight:      600;
+}
+
+/* ─── Icon Button ───────────────────────────────────────────────────────────── */
+md-icon-button {
+  --md-icon-button-icon-color:             var(--md-sys-color-on-surface-variant);
+  --md-icon-button-hover-icon-color:       var(--md-sys-color-on-surface);
+  --md-icon-button-hover-state-layer-color: var(--md-sys-color-primary);
+  --md-icon-button-icon-size:              1.25rem;
+}
+
+/* ─── Text Field ────────────────────────────────────────────────────────────── */
+md-outlined-text-field {
+  --md-outlined-text-field-outline-color:             var(--md-sys-color-outline);
+  --md-outlined-text-field-focus-outline-color:       var(--md-sys-color-primary);
+  --md-outlined-text-field-label-text-color:          var(--md-sys-color-on-surface-variant);
+  --md-outlined-text-field-focus-label-text-color:    var(--md-sys-color-primary);
+  --md-outlined-text-field-input-text-color:          var(--md-sys-color-on-surface);
+  --md-outlined-text-field-caret-color:               var(--md-sys-color-primary);
+  --md-outlined-text-field-container-shape:           var(--md-sys-shape-corner-small);
+  --md-outlined-text-field-input-text-font:           var(--md-ref-typeface-brand);
+  --md-outlined-text-field-supporting-text-font:      var(--md-ref-typeface-brand);
+  width: 100%;
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+/* ─── Select ────────────────────────────────────────────────────────────────── */
+md-outlined-select {
+  --md-outlined-select-text-field-outline-color:          var(--md-sys-color-outline);
+  --md-outlined-select-text-field-focus-outline-color:    var(--md-sys-color-primary);
+  --md-outlined-select-text-field-label-text-color:       var(--md-sys-color-on-surface-variant);
+  --md-outlined-select-text-field-focus-label-text-color: var(--md-sys-color-primary);
+  --md-outlined-select-text-field-input-text-color:       var(--md-sys-color-on-surface);
+  --md-outlined-select-text-field-caret-color:            var(--md-sys-color-primary);
+  --md-outlined-select-text-field-container-shape:        var(--md-sys-shape-corner-small);
+  width: 100%;
+  margin-bottom: 0.75rem;
+  display: block;
+}
+md-select-option {
+  --md-menu-item-label-text-color: var(--md-sys-color-on-surface);
+}
+
+/* ─── Tabs ──────────────────────────────────────────────────────────────────── */
+md-tabs {
+  --md-primary-tab-active-indicator-color:    var(--md-sys-color-primary);
+  --md-primary-tab-active-indicator-height:   3px;
+  --md-primary-tab-active-label-text-color:   var(--md-sys-color-primary);
+  --md-primary-tab-label-text-color:          var(--md-sys-color-outline);
+  --md-primary-tab-hover-label-text-color:    var(--md-sys-color-on-surface-variant);
+  --md-primary-tab-label-text-font:           var(--md-ref-typeface-brand);
+  --md-primary-tab-label-text-weight:         700;
+  --md-primary-tab-label-text-size:           0.875rem;
+  --md-primary-tab-height:                    52px;
+  --md-secondary-tab-active-indicator-color:  var(--md-sys-color-primary);
+  --md-secondary-tab-active-label-text-color: var(--md-sys-color-primary);
+  --md-secondary-tab-label-text-color:        var(--md-sys-color-outline);
+  --md-secondary-tab-label-text-font:         var(--md-ref-typeface-brand);
+  --md-secondary-tab-label-text-weight:       700;
+  --md-secondary-tab-height:                  48px;
+  --md-tabs-divider-color:                    var(--md-sys-color-outline-variant);
+  background: var(--md-sys-color-surface-container);
+}
+
+/* Dialogs are now native <dialog class="m3-dialog"> — styled in layout.css */
+
+/* ─── Checkbox ──────────────────────────────────────────────────────────────── */
+md-checkbox {
+  --md-checkbox-selected-container-color:        var(--md-sys-color-primary);
+  --md-checkbox-selected-focus-container-color:  var(--md-sys-color-primary);
+  --md-checkbox-selected-hover-container-color:  var(--md-sys-color-primary);
+  --md-checkbox-selected-pressed-container-color: var(--md-sys-color-primary-container);
+  --md-checkbox-selected-icon-color:             var(--md-sys-color-on-primary);
+  --md-checkbox-outline-color:                   var(--md-sys-color-outline);
+}
+
+/* ─── Circular Progress ─────────────────────────────────────────────────────── */
+md-circular-progress {
+  --md-circular-progress-active-indicator-color: var(--md-sys-color-primary);
+}
+
+/* ─── Light theme field adjustments ────────────────────────────────────────── */
+:root[data-theme="light"] md-outlined-text-field {
+  --md-outlined-text-field-outline-color: var(--md-sys-color-outline);
+}
+:root[data-theme="light"] md-outlined-select {
+  --md-outlined-select-text-field-outline-color: var(--md-sys-color-outline);
+}
+
+/* ─── Danger tonal override ─────────────────────────────────────────────────── */
+.danger-tonal-btn {
+  --md-filled-tonal-button-container-color:    var(--md-sys-color-error-container);
+  --md-filled-tonal-button-label-text-color:   var(--md-sys-color-on-error-container);
+  --md-filled-tonal-button-icon-color:         var(--md-sys-color-on-error-container);
+  --md-filled-tonal-button-hover-state-layer-color: var(--md-sys-color-on-error-container);
+}
